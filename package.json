@@ -1,0 +1,26 @@
+{
+  "name": "shop",
+  "description": "",
+  "version": "1.0.0",
+  "author": "Volodin Artem",
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "node": "^16.9.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "sass": "^1.42.1",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-react": "^7.12.0",
+    "babel-loader": "^8.0.0",
+    "@babel/preset-env": "^7.12.0",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.3.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
