@@ -9,7 +9,8 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         port: 1337,
-        open: true
+        open: true,
+        openPage : "public/index.html"
     },
     module:{
         rules:[
@@ -20,6 +21,14 @@ module.exports = {
                 options:{
                     presets:["@babel/preset-env", "@babel/preset-react"]
                 }
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
+                ]
             }
         ]
     }
