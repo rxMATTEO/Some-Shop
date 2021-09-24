@@ -15,4 +15,81 @@ html,body
     scroll-behavior: smooth
 
 .content
-    max-width: 1620px
+    max-width: 1680px
+    margin: 0 auto
+
+.info
+    display: flex
+    justify-content: space-between
+    padding: 10px 0
+    border-bottom: black solid 1px
+    align-items: center
+
+.infoLink
+    font-size: 16px
+    color: black
+    margin-right: 20px
+    display: inline-block
+
+.topNav
+    width: 100%
+    position: relative
+    top: 0
+
+%center-align
+    text-align: center
+    position: relative
+    top: 50%
+    transform: translate(0,-50%)
+
+.bucket
+    background-color: #699FF0
+    padding: 10px 5px
+    color: white
+
+.search
+    margin-top: 20px
+    display: flex
+    justify-content: space-between
+    .searchBar
+        border: 2px solid #6E81FA
+        width: 1000px
+        height: 30px
+        &:focus
+            outline: none
+    .searchButton
+        width: 150px
+        background-color: #6E81FA
+        display: inline-block
+        .buttonLabel
+            cursor: pointer
+            color: white
+            @extend %center-align
+
+.navMenu
+    position: relative
+    margin-top: 20px
+    color: white
+    .navItem
+        width: calc(100%/6)
+        background-color: #7F6FE3
+        height: 56px
+        display: inline-block
+        transition: background .2s ease-in-out
+        &:hover
+            background-color: #C569F0
+        .navLabel
+            @extend %center-align
+
+.banner
+    width: 100vw
+    overflow: hidden
+    display: inline-block
+    .bannerItem
+        width: 100vw
+        display: inline-block
+        height: 200px
+.wrapper
+    height: 130px
+    width: 99999999999999px
+    position: relative

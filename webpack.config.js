@@ -1,6 +1,7 @@
 let path = require('path');
 
 module.exports = {
+    mode : "development",
     entry: "./src/index.js",
     output:{
         path: path.resolve(__dirname + '/public'),
@@ -10,7 +11,6 @@ module.exports = {
         historyApiFallback: true,
         port: 1337,
         open: true,
-        openPage : "public/index.html"
     },
     module:{
         rules:[
