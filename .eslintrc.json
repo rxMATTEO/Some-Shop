@@ -21,6 +21,9 @@
         "linebreak-style": "off",
         "quotes": "off",
         "prefer-template": "off",
-        "import/extensions" : "off"
+        "import/extensions" : "off",
+        "no-useless-concat": "off",
+        "react/prop-types": "off",
+        "react/destructuring-assignment": "off"
     }
 }
