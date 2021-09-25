@@ -82,6 +82,7 @@ html,body
             @extend %center-align
 
 .banner
+    position: relative
     width: 100vw
     overflow: hidden
     display: inline-block
@@ -89,7 +90,17 @@ html,body
         width: 100vw
         display: inline-block
         height: 200px
-.wrapper
-    height: 130px
+
+.carousel
     width: 99999999999999px
     position: relative
+    transition: right .5s ease-in-out
+
+.arrowButton
+    @extend %center-align
+    display: inline-block
+    position: absolute
+    top: 50%
+    z-index: 100
+    &.right
+        left: 99vw

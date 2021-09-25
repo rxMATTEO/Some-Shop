@@ -45,7 +45,7 @@ html, body {
   top: 0;
 }
 
-.navMenu .navItem .navLabel, .search .searchButton .buttonLabel {
+.arrowButton, .navMenu .navItem .navLabel, .search .searchButton .buttonLabel {
   text-align: center;
   position: relative;
   top: 50%;
@@ -97,6 +97,7 @@ html, body {
   background-color: #C569F0;
 }
 .banner {
+  position: relative;
   width: 100vw;
   overflow: hidden;
   display: inline-block;
@@ -107,10 +108,20 @@ html, body {
   height: 200px;
 }
 
-.wrapper {
-  height: 130px;
+.carousel {
   width: 99999999999999px;
   position: relative;
+  transition: right 0.5s ease-in-out;
+}
+
+.arrowButton {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  z-index: 100;
+}
+.arrowButton.right {
+  left: 99vw;
 }
 
 /*# sourceMappingURL=index.css.map */

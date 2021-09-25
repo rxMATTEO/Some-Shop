@@ -18,6 +18,8 @@
         "react"
     ],
     "rules": {
-        "linebreak-style": "off"
+        "linebreak-style": "off",
+        "quotes": "off",
+        "prefer-template": "off"
     }
 }
