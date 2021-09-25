@@ -12,8 +12,8 @@ class Bucket extends React.Component {
     const { iconPath } = this.state;
     return (
       <div className="bucket">
-        <img alt="bucket" src={iconPath} />
-        {text}
+        {iconPath}
+        <p className="bucketText">{text}</p>
       </div>
     );
   }

@@ -57,6 +57,14 @@ html, body {
   padding: 10px 5px;
   color: white;
 }
+.bucket .img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.bucket .bucketText {
+  display: inline-block;
+  vertical-align: middle;
+}
 
 .search {
   margin-top: 20px;
