@@ -104,6 +104,53 @@ html, body {
 .navMenu .navItem:hover {
   background-color: #C569F0;
 }
+.navMenu .categoryMenu {
+  background-color: white;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.navMenu .categoryMenu .subCategories {
+  display: inline-block;
+  width: 300px;
+  float: left;
+}
+.navMenu .categoryMenu .subCategories .subCategory {
+  background-color: #68C9FF;
+  display: block;
+  padding: 10px;
+  color: white;
+}
+.navMenu .categoryMenu .subCategories .subCategory:hover {
+  background-color: #6E81FA;
+}
+.navMenu .categoryMenu .categoryItem {
+  min-width: 200px;
+  height: 135px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-right: 30px;
+  display: inline-block;
+  padding: 10px;
+}
+.navMenu .categoryMenu .categoryItem .itemImg {
+  float: left;
+  height: 100px;
+  max-width: 40%;
+}
+.navMenu .categoryMenu .categoryItem .categoryProducts {
+  padding-left: 10px;
+  width: 60%;
+  float: left;
+}
+.navMenu .categoryMenu .categoryItem .categoryProducts .categoryHeader {
+  font-size: 25px;
+  color: #68C9FF;
+}
+.navMenu .categoryMenu .categoryItem .brand {
+  color: black;
+}
+
 .banner {
   position: relative;
   width: 100vw;
@@ -127,7 +174,7 @@ html, body {
   display: inline-block;
   position: absolute;
   top: 50%;
-  z-index: 100;
+  z-index: 2;
   cursor: pointer;
   margin-left: 10px;
   fill: #699FF0;
