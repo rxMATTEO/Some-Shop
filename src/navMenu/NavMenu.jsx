@@ -17,8 +17,10 @@ class NavMenu extends React.Component {
     this.setState({ subcategories: items });
   }
 
-  onMouseOut(e){
-    if(e.relatedTarget && !e.relatedTarget.closest('.categoryMenu')) this.setState({ visibility: 'none' });
+  onMouseOut(e) {
+    if (e.relatedTarget && !e.relatedTarget.closest('.categoryMenu')) {
+      this.setState({ visibility: 'none' });
+    }
   }
 
   render() {
@@ -29,13 +31,13 @@ class NavMenu extends React.Component {
     const { visibility, subcategories } = this.state;
     return (
       <div className="navMenu">
-        <NavItem onMouseOver={this.onMouseOver} subcategories={ category } text="Каталог товаров" />
+        <NavItem onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} subcategories={ category } text="Каталог товаров" />
         <NavItem onMouseOver={this.onMouseOver} subcategories={ category } text="Компьютерная техника" />
         <NavItem onMouseOver={this.onMouseOver} subcategories={ category } text="Бытовая техника" />
         <NavItem onMouseOver={this.onMouseOver} subcategories={ category } text="Телевизоры" />
         <NavItem onMouseOver={this.onMouseOver} subcategories={ category } text="Смартфоны" />
         <NavItem onMouseOver={this.onMouseOver} subcategories={ category } text="Товары для дома" />
-        <CategoryMenu visibility={visibility} subcategories={subcategories} onMouseOut={this.onMouseOut}/>
+        <CategoryMenu visibility={visibility} subcategories={subcategories} onMouseOut={this.onMouseOut} />
       </div>
     );
   }
