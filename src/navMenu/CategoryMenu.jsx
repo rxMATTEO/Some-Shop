@@ -14,6 +14,13 @@ class CategoryMenu extends React.Component {
     this.setState({ hoveredItem: item });
   }
 
+  getHoveredItemOrFirst(){
+    if(Object.keys(this.state.hoveredItem).length === 0){
+      return this.props.subcategories[0];
+    }
+    return this.state.hoveredItem;
+  }
+
 // todo remove inline styles
 
   render() {
@@ -27,7 +34,7 @@ class CategoryMenu extends React.Component {
         </div>
         <div style={{ display: "inline-block", padding: "0 20px 20px 0" }}>
           {
-            this.state.hoveredItem.product?.map(
+            this.getHoveredItemOrFirst()?.product?.map(
               (item) => <CategoryItem imgSrc={item.imgSrc} header={item.header} brands={item.brands} />
             )
           }

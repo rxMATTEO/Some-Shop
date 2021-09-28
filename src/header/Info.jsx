@@ -19,7 +19,7 @@ class Info extends React.Component {
           <InfoLink link="#" text="О нас" />
           <InfoLink link="#" text="Контакты" />
         </div>
-        <div>
+        <div className="bucket-container">
           <Bucket text="Корзина пуста" iconPath={icon} />
         </div>
       </div>
