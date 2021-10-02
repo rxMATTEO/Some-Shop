@@ -11,6 +11,9 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search content">
+        <div>
+          <img src="../../image.png" className="shop-logo"/>
+        </div>
         <SearchBar />
         <Button className={"searchButton"} text={"Найти"}/>
       </div>
