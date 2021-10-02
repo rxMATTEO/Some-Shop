@@ -9,14 +9,16 @@ class PopularProductContainer extends React.Component {
 
   render() {
     return (
-      <div className="content popular-product-container">
-        <p className="container-label">Популярные товары</p>
-        <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-        <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-        <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-        <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-        <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-        <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+      <div>
+        <p className="container-label content">Популярные товары</p>
+        <div className="content popular-product-container">
+          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+        </div>
       </div>
     );
   }

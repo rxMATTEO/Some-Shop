@@ -11,7 +11,7 @@ class PopularProduct extends React.Component {
     return (
       <div className="popular-product">
         <div className="product-img">
-          <img src={this.props.imgSrc} />
+          <img src={this.props.imgSrc} alt={this.props.desc}/>
         </div>
         <div className="product-bottom">
           <div className="product-price">
@@ -20,9 +20,7 @@ class PopularProduct extends React.Component {
           <div className="product-desc">
             {this.props.desc}
           </div>
-          <div>
             <Button text="В корзину" className="product-button" />
-          </div>
         </div>
       </div>
     );
