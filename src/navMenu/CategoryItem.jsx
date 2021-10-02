@@ -14,7 +14,7 @@ class CategoryItem extends React.Component {
           <p className="categoryHeader">{this.props.header}</p>
           {
             this.props.brands?.map(
-            item => <p className="brand">{item}</p>
+            item => <a className="brand" href="#">{item}</a>
           )}
         </div>
       </div>
