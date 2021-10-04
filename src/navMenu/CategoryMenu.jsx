@@ -26,7 +26,7 @@ class CategoryMenu extends React.Component {
   render() {
     const { subcategories } = this.props;
     return (
-      <div className="categoryMenu" style={{ display: this.props.visibility }} onMouseOut={(e) => this.props.onMouseOut(e, () => this.setState({hoveredItem: {}}))}>
+      <div className="categoryMenu" onMouseLeave={e => this.props.mouseLeave(e)} style={{ display: this.props.visibility }} onMouseOut={(e) => this.props.onMouseOut(e, () => this.setState({hoveredItem: {}}))}>
         <div className="subCategories">
           {
             subcategories?.map((item) => <Subcategory onMouseOver={this.onSubCategoryMouseOver} item={item} />)

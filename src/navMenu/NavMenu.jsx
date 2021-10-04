@@ -7,23 +7,26 @@ import getCategoryItem from "./getCategoryItem.js";
 class NavMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { visibility: "none", subcategories: [] };
+    this.state = { visibility: "none", subcategories: [], navItem: {} };
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
   }
 
   onMouseOver(e, items) {
     this.setState({ visibility: 'block' });
+    e.target.closest('.navItem').style.backgroundColor = "#C569F0";
+    if(e.target.closest('.navItem')) this.setState({navItem: e.target.closest('.navItem')});
     this.setState({ subcategories: items });
   }
 
   onMouseOut(e, callback) {
     if (e.relatedTarget && !e.relatedTarget.closest('.categoryMenu')) {
       this.setState({ visibility: 'none' });
+      if (e.target.closest('.navItem')) e.target.closest('.navItem').style.backgroundColor = "#7F6FE3";
       if(callback) callback();
     }
   }
-
+  //todo remove class names ands background colors to variables
   render() {
     const pcParts = [
       getCategoryItem('Комплектующие для ПК', [ {imgSrc: 'https://c.dns-shop.ru/thumb/st1/fit/220/150/9f2382f80196fe69081442ae4995c60d/b70d20da48dfebda15c88f04044237bfa6234fe05d539ff68a61395785620202.jpg', header: 'Процессоры', brands: ['Intel', 'AMD']},
@@ -52,7 +55,7 @@ class NavMenu extends React.Component {
         <NavItem onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} subcategories={tvs} text="Телевизоры" />
         <NavItem onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} subcategories={phones} text="Смартфоны" />
         <NavItem onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} subcategories={house} text="Товары для дома" />
-        <CategoryMenu visibility={visibility} subcategories={subcategories} onMouseOut={this.onMouseOut} />
+        <CategoryMenu mouseLeave={() => this.state.navItem.style.backgroundColor = "#7F6FE3"} visibility={visibility} subcategories={subcategories} onMouseOut={this.onMouseOut} />
       </div>
     );
   }
