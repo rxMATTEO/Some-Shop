@@ -164,10 +164,8 @@ html, body {
 
 .banner {
   position: relative;
-  width: 100vw;
   overflow: hidden;
   display: inline-block;
-  margin-top: 30px;
 }
 .banner .bannerItem {
   width: 100vw;
@@ -191,20 +189,23 @@ html, body {
   fill: #699FF0;
 }
 .arrowButton.right {
-  left: calc(100vw - 30px);
+  right: 10px;
   margin-left: 0;
+}
+.arrowButton svg {
+  display: block;
 }
 
 .container-label {
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .popular-product-container {
-  margin-top: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 .popular-product-container .popular-product {
   padding-right: 20px;

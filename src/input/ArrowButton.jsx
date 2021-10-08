@@ -6,7 +6,9 @@ class ArrowButton extends React.Component {
     const style = this.props.style ? this.props.style : "";
     const { onClick } = this.props;
     return (
-      <div onClick={onClick} className={"arrowButton " + style} role="button">{ this.props.text }</div>
+      <div style={{padding: "5px", borderRadius: "5px", backgroundColor: "white", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}} className={"arrowButton " + style} onClick={onClick} >
+        { this.props.text }
+      </div>
     );
   }
 }
