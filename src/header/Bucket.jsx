@@ -13,7 +13,7 @@ class Bucket extends React.Component {
     return (
       <div className="bucket">
         {iconPath}
-        <p className="bucketText">{text}</p>
+        <p className="bucket-text">{text}</p>
       </div>
     );
   }

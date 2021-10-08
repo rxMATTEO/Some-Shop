@@ -15,7 +15,7 @@ class Search extends React.Component {
           <img src="../../image.png" className="shop-logo"/>
         </div>
         <SearchBar />
-        <Button className={"searchButton"} text={"Найти"}/>
+        <Button className={"search-button"} text={"Найти"}/>
       </div>
     );
   }

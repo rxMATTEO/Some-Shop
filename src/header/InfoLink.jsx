@@ -11,7 +11,7 @@ class InfoLink extends React.Component {
     const { link } = this.state;
     const { text } = this.state;
     return (
-      <a href={link} className="infoLink">{text}</a>
+      <a href={link} className="info-link">{text}</a>
     );
   }
 }

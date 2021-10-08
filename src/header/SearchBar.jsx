@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <input type="search" className="searchBar" />
+      <input type="search" className="searchbar" />
     );
   }
 }

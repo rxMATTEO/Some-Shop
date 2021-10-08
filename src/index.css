@@ -32,20 +32,20 @@ html, body {
   align-items: center;
 }
 
-.infoLink {
+.info-link {
   font-size: 16px;
   color: black;
   margin-right: 20px;
   display: inline-block;
 }
 
-.topNav {
+.top-nav {
   width: 100%;
   position: relative;
   top: 0;
 }
 
-.arrowButton, .navMenu .navItem .navLabel, .search .searchButton .buttonLabel {
+.arrow-button, .nav-menu .nav-item .nav-label, .search .search-button .button-label {
   text-align: center;
   position: relative;
   top: 50%;
@@ -61,7 +61,7 @@ html, body {
   vertical-align: middle;
   margin-right: 5px;
 }
-.bucket .bucketText {
+.bucket .bucket-text {
   display: inline-block;
   vertical-align: middle;
 }
@@ -72,61 +72,61 @@ html, body {
   display: flex;
   justify-content: space-between;
 }
-.search .searchBar {
+.search .searchbar {
   border: 2px solid #6E81FA;
   width: 1000px;
   height: inherit;
 }
-.search .searchBar:focus {
+.search .searchbar:focus {
   outline: none;
 }
-.search .searchButton {
+.search .search-button {
   width: 150px;
   background-color: #6E81FA;
   display: inline-block;
 }
-.search .searchButton .buttonLabel {
+.search .search-button .button-label {
   cursor: pointer;
   color: white;
 }
 
-.navMenu {
+.nav-menu {
   position: relative;
   margin-top: 20px;
   color: white;
 }
-.navMenu .navItem {
+.nav-menu .nav-item {
   width: calc(100%/6);
   background-color: #7F6FE3;
   height: 56px;
   display: inline-block;
   transition: background 0.2s ease-in-out;
 }
-.navMenu .navItem:hover {
+.nav-menu .nav-item:hover {
   background-color: #C569F0;
 }
-.navMenu .categoryMenu {
+.nav-menu .category-menu {
   background-color: white;
   position: absolute;
   z-index: 5;
   width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.navMenu .categoryMenu .subCategories {
+.nav-menu .category-menu .subcategories {
   display: inline-block;
   width: 300px;
   float: left;
 }
-.navMenu .categoryMenu .subCategories .subCategory {
+.nav-menu .category-menu .subcategories .subcategory {
   background-color: #68C9FF;
   display: block;
   padding: 10px;
   color: white;
 }
-.navMenu .categoryMenu .subCategories .subCategory:hover {
+.nav-menu .category-menu .subcategories .subcategory:hover {
   background-color: #6E81FA;
 }
-.navMenu .categoryMenu .categoryItem {
+.nav-menu .category-menu .category-item {
   min-width: 200px;
   height: 135px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -135,22 +135,22 @@ html, body {
   padding: 10px;
   cursor: pointer;
 }
-.navMenu .categoryMenu .categoryItem .itemImg {
+.nav-menu .category-menu .category-item .item-img {
   float: left;
   height: 100px;
   max-width: 40%;
 }
-.navMenu .categoryMenu .categoryItem .categoryProducts {
+.nav-menu .category-menu .category-item .category-products {
   padding-left: 10px;
   width: 60%;
   float: left;
 }
-.navMenu .categoryMenu .categoryItem .categoryProducts .categoryHeader {
+.nav-menu .category-menu .category-item .category-products .category-header {
   font-size: 25px;
   color: #68C9FF;
   padding-bottom: 5px;
 }
-.navMenu .categoryMenu .categoryItem .brand {
+.nav-menu .category-menu .category-item .brand {
   color: black;
   float: left;
   display: block;
@@ -158,7 +158,7 @@ html, body {
   padding-bottom: 2.5px;
   transition: color 0.2s ease-in-out;
 }
-.navMenu .categoryMenu .categoryItem .brand:hover {
+.nav-menu .category-menu .category-item .brand:hover {
   color: #C569F0;
 }
 
@@ -167,7 +167,7 @@ html, body {
   overflow: hidden;
   display: inline-block;
 }
-.banner .bannerItem {
+.banner .banner-item {
   width: 100vw;
   display: inline-block;
   height: 200px;
@@ -179,7 +179,7 @@ html, body {
   transition: right 0.5s ease-in-out;
 }
 
-.arrowButton {
+.arrow-button {
   display: inline-block;
   position: absolute;
   top: 50%;
@@ -188,11 +188,11 @@ html, body {
   margin-left: 10px;
   fill: #699FF0;
 }
-.arrowButton.right {
+.arrow-button.right {
   right: 10px;
   margin-left: 0;
 }
-.arrowButton svg {
+.arrow-button svg {
   display: block;
 }
 

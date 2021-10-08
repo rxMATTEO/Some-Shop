@@ -8,10 +8,10 @@ class CategoryItem extends React.Component {
 
   render() {
     return (
-      <div className="categoryItem">
-        <img src={this.props.imgSrc} className="itemImg" alt={this.props.header}/>
-        <div className="categoryProducts">
-          <p className="categoryHeader">{this.props.header}</p>
+      <div className="category-item">
+        <img src={this.props.imgSrc} className="item-img" alt={this.props.header}/>
+        <div className="category-products">
+          <p className="category-header">{this.props.header}</p>
           {
             this.props.brands?.map(
             item => <a className="brand" href="#">{item}</a>

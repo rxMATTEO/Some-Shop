@@ -10,8 +10,8 @@ class NavItem extends React.Component {
   render() {
     const { text } = this.state;
     return (
-      <div className="navItem" onMouseOver={(event) => this.props.onMouseOver(event, this.props.subcategories)} onMouseOut={((event) => { this.props.onMouseOut(event) })}>
-        <p className="navLabel">{text}</p>
+      <div className="nav-item" onMouseOver={(event) => this.props.onMouseOver(event, this.props.subcategories)} onMouseOut={((event) => { this.props.onMouseOut(event) })}>
+        <p className="nav-label">{text}</p>
       </div>
     );
   }

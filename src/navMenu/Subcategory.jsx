@@ -8,7 +8,7 @@ class Subcategory extends React.Component {
 
   render() {
     return (
-      <a href="#" className="subCategory" onMouseOver={ (event) => this.props.onMouseOver(event, this.props.item) }>{this.props.item.categoryName}</a>
+      <a href="#" className="subcategory" onMouseOver={ (event) => this.props.onMouseOver(event, this.props.item) }>{this.props.item.categoryName}</a>
     );
   }
 }

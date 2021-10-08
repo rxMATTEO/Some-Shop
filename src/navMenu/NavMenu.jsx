@@ -14,15 +14,15 @@ class NavMenu extends React.Component {
 
   onMouseOver(e, items) {
     this.setState({ visibility: 'block' });
-    e.target.closest('.navItem').style.backgroundColor = "#C569F0";
-    if(e.target.closest('.navItem')) this.setState({navItem: e.target.closest('.navItem')});
+    e.target.closest('.nav-item').style.backgroundColor = "#C569F0";
+    if(e.target.closest('.nav-item')) this.setState({navItem: e.target.closest('.nav-item')});
     this.setState({ subcategories: items });
   }
 
   onMouseOut(e, callback) {
     if (e.relatedTarget && !e.relatedTarget.closest('.categoryMenu')) {
       this.setState({ visibility: 'none' });
-      if (e.target.closest('.navItem')) e.target.closest('.navItem').style.backgroundColor = "#7F6FE3";
+      if (e.target.closest('.nav-item')) e.target.closest('.nav-item').style.backgroundColor = "#7F6FE3";
       if(callback) callback();
     }
   }
@@ -48,7 +48,7 @@ class NavMenu extends React.Component {
     ];
     const { visibility, subcategories } = this.state;
     return (
-      <div className="navMenu">
+      <div className="nav-menu">
         <NavItem onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} subcategories={pcParts} text="Каталог товаров" />
         <NavItem onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} subcategories={pcParts} text="Компьютерная техника" />
         <NavItem onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} subcategories={appliances} text="Бытовая техника" />

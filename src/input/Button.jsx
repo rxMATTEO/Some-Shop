@@ -12,7 +12,7 @@ class Button extends React.Component {
     const text = this.state.text;
     return (
       <div className={cN}>
-        <p className="buttonLabel">{text}</p>
+        <p className="button-label">{text}</p>
       </div>
     );
   }
