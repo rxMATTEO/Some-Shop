@@ -16,7 +16,7 @@ class Banner extends React.Component {
 
   render() {
     return (
-        <Carousel offset={window.innerWidth} items={this.state.bannerItems} />
+        <Carousel offset={window.innerWidth} items={this.state.bannerItems} style={{marginTop: "20px"}} />
     );
   }
 }
