@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from "../input/Button.jsx";
 
-class PopularProduct extends React.Component {
+class Product extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -27,4 +27,4 @@ class PopularProduct extends React.Component {
   }
 }
 
-export default PopularProduct;
+export default Product;

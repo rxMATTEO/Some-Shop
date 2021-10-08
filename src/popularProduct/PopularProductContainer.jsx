@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PopularProduct from "./PopularProduct.jsx";
+import Product from "../product/Product.jsx";
 
 class PopularProductContainer extends React.Component {
   constructor(props) {
@@ -12,12 +12,12 @@ class PopularProductContainer extends React.Component {
       <div>
         <p className="container-label content">Популярные товары</p>
         <div className="content popular-product-container">
-          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
-          <PopularProduct imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <Product imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <Product imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <Product imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <Product imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <Product imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
+          <Product imgSrc="https://ru.reactjs.org/logo-og.png" price="200000" desc="React" />
         </div>
       </div>
     );
