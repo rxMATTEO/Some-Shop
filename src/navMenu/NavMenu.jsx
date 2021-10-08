@@ -20,7 +20,7 @@ class NavMenu extends React.Component {
   }
 
   onMouseOut(e, callback) {
-    if (e.relatedTarget && !e.relatedTarget.closest('.categoryMenu')) {
+    if (e.relatedTarget && !e.relatedTarget.closest('.category-menu')) {
       this.setState({ visibility: 'none' });
       if (e.target.closest('.nav-item')) e.target.closest('.nav-item').style.backgroundColor = "#7F6FE3";
       if(callback) callback();
