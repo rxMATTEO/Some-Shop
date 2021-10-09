@@ -5,7 +5,7 @@ import ArrowButton from "./ArrowButton.jsx";
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { right: 0 };
+    this.state = { right: 0, transition: "" };
     this.onLeftArrowClick = this.onLeftArrowClick.bind(this);
     this.onRightArrowClick = this.onRightArrowClick.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
@@ -16,6 +16,7 @@ class Carousel extends React.Component {
     const { right } = this.state;
     const width = this.props.offset;
     const widthWithItem = right - width;
+    this.setState({ transition: "right .5s ease-in-out" });
     if (widthWithItem >= 0) {
       this.setState({ right: widthWithItem });
     }
@@ -26,12 +27,14 @@ class Carousel extends React.Component {
     const maxWidth = this.props.items.length * width;
     const { right } = this.state;
     const widthWithItem = +right + +width;
+    this.setState( { transition: "right .5s ease-in-out" });
     if (widthWithItem < maxWidth) {
       this.setState({ right: widthWithItem });
     }
   }
 
   onMouseDown(e){
+    this.setState({ transition: "none" });
     this.func = (e) => this.onMouseMove(e,e.pageX);
     this.setState({ zero: e.pageX + this.state.right });
     window.addEventListener('mousemove', this.func);
@@ -55,8 +58,8 @@ class Carousel extends React.Component {
     style.width = this.props.width;
     return (
       <div className="banner" style={style} onMouseDown={ this.onMouseDown }>
-        <ArrowButton text={leftArrow} onClick={this.onLeftArrowClick} />
-        <div className="carousel" style={{ right: right }}>
+        <ArrowButton text={leftArrow} onClick={ this.onLeftArrowClick } />
+        <div className="carousel" style={{ right: right, transition: this.state.transition }}>
           { this.props.items }
         </div>
         <ArrowButton text={rightArrow} style="right" onClick={this.onRightArrowClick} />
