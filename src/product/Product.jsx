@@ -9,7 +9,7 @@ class Product extends React.Component {
 
   render() {
     return (
-      <div className="popular-product">
+      <a className="popular-product" href="#">
         <div className="product-img">
           <img src={this.props.imgSrc} alt={this.props.desc}/>
         </div>
@@ -22,7 +22,7 @@ class Product extends React.Component {
           </div>
             <Button text="В корзину" className="product-button" />
         </div>
-      </div>
+      </a>
     );
   }
 }
