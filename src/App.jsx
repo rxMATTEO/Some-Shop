@@ -6,6 +6,7 @@ import NavMenu from "./navMenu/NavMenu.jsx";
 import Banner from "./banner/Banner.jsx";
 import PopularProductContainer from "./popularProduct/PopularProductContainer.jsx";
 import RecentlyViewed from "./recently-viewed/RecentlyViewed.js";
+import Footer from "./footer/Footer.jsx";
 
 class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class App extends React.Component {
         <Banner />
         <PopularProductContainer />
         <RecentlyViewed />
+        <Footer />
       </div>
     );
   }

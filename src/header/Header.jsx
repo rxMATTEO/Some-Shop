@@ -10,7 +10,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className="top-nav">
+      <div>
         <Info />
         <Search />
       </div>

@@ -41,7 +41,7 @@ html, body {
 
 .top-nav {
   width: 100%;
-  position: relative;
+  position: fixed;
   top: 0;
 }
 
@@ -67,15 +67,18 @@ html, body {
 }
 
 .search {
-  max-height: 33px;
+  height: 50px;
   margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
+  z-index: 20;
+  position: fixed;
+  transition: top ease-in-out 0.2s;
+  background-color: white;
+  width: 100%;
 }
 .search .searchbar {
   border: 2px solid #6E81FA;
   width: 1000px;
-  height: inherit;
+  height: 30px;
 }
 .search .searchbar:focus {
   outline: none;
@@ -84,6 +87,7 @@ html, body {
   width: 150px;
   background-color: #6E81FA;
   display: inline-block;
+  height: 30px;
 }
 .search .search-button .button-label {
   cursor: pointer;
@@ -248,6 +252,24 @@ html, body {
   display: block;
   position: relative;
   top: -20px;
+}
+
+.footer {
+  margin-top: 50px;
+  background-color: #939598;
+  padding: 20px 0;
+  color: white;
+}
+.footer .footer__block {
+  font-size: 17px;
+}
+
+.horizontal-line {
+  border: 1px solid #444;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 10px 0;
 }
 
 /*# sourceMappingURL=index.css.map */
