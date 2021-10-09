@@ -5,7 +5,7 @@ import Header from './header/Header.jsx';
 import NavMenu from "./navMenu/NavMenu.jsx";
 import Banner from "./banner/Banner.jsx";
 import PopularProductContainer from "./popularProduct/PopularProductContainer.jsx";
-import RecentlyViewed from "./recently-viewed/RecentlyViewed.js";
+import RecentlyViewed from "./recently-viewed/RecentlyViewed.jsx";
 import Footer from "./footer/Footer.jsx";
 
 class App extends React.Component {

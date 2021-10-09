@@ -13,9 +13,9 @@ class Search extends React.Component {
 
   onScroll(e){
     if(window.pageYOffset > 20){
-      this.setState({style: { top: 0, marginTop: 0, boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }});
+      this.setState({ style: { top: 0, marginTop: 0, boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" } });
     }
-    else this.setState({style: { top: "60px", marginTop: "", boxShadow: "none" }})
+    else this.setState({ style: { top: "60px", marginTop: "", boxShadow: "none" } })
   }
 
   render() {

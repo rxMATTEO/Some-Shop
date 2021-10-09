@@ -9,9 +9,9 @@ class Product extends React.Component {
 
   render() {
     return (
-      <a className="popular-product" href="#">
+      <a className="popular-product" href="#" onDragStart={ (e) => e.preventDefault() }>
         <div className="product-img">
-          <img src={this.props.imgSrc} alt={this.props.desc}/>
+          <img src={this.props.imgSrc} alt={this.props.desc} onDragStart={ (e) => e.preventDefault() } />
         </div>
         <div className="product-bottom">
           <div className="product-price">

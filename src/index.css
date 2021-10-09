@@ -180,7 +180,6 @@ html, body {
 .carousel {
   width: 99999999999999px;
   position: relative;
-  transition: right 0.5s ease-in-out;
 }
 
 .arrow-button {
