@@ -6,6 +6,13 @@ class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { right: 0, transition: "", maxWidth: this.props.items.length * this.props.offset };
+
+    const possibleRight = [];
+    for (let i = 0; i < this.props.items.length; i++){
+      possibleRight.push(i * this.props.offset);
+    }
+    this.possibleRight = possibleRight;
+
     this.onLeftArrowClick = this.onLeftArrowClick.bind(this);
     this.onRightArrowClick = this.onRightArrowClick.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
@@ -49,6 +56,20 @@ class Carousel extends React.Component {
 
   onMouseUp(e){
     window.removeEventListener('mousemove', this.func);
+    let { right } = this.state;
+    const correctRightIndex = this.possibleRight.findIndex( item => right < item );
+    while(right >= this.props.offset){
+      right -= this.props.offset
+    }
+    let index;
+    if(right >= this.props.offset / 2){
+      index = this.possibleRight[correctRightIndex];
+    }
+    else {
+      index = this.possibleRight[correctRightIndex - 1];
+      if(isNaN(index)) return;
+    }
+      this.setState({ right: index });
   }
 
   render() {
