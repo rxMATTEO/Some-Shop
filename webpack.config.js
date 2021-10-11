@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+    devtool: 'eval-source-map',
     mode : "development",
     entry: "./src/index.js",
     output:{
@@ -10,7 +11,7 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         port: 1337,
-        open: true,
+        open: true
     },
     module:{
         rules:[
