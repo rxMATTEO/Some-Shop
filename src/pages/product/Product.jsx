@@ -50,6 +50,11 @@ class Product extends React.Component {
                 </div>
               </div>
             </div>
+            <div className="right-logo">
+              <a className="right-logo__logo" href="#">
+                <img src={this.props.productLogo} height="50px" width="50px" data-tooltip="a" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
