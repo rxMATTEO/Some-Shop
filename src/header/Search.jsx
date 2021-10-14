@@ -25,7 +25,9 @@ class Search extends React.Component {
         <div className="search" style={{ top: this.state.style.top, marginTop: this.state.style.marginTop, boxShadow: this.state.style.boxShadow }}>
           <div className="content" style={{display: "flex", justifyContent: "space-between", top: "10px", position: "relative", height: "10px"}}>
             <div>
-              <img src="../../image.png" className="shop-logo"/>
+              <a href="/">
+                <img src="../../image.png" className="shop-logo"/>
+              </a>
             </div>
             <SearchBar />
             <Button className={"search-button"} text={"Найти"}/>
