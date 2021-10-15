@@ -277,4 +277,38 @@ html, body {
   margin: 10px 0;
 }
 
+@keyframes opacityAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.arrowToolTip {
+  position: absolute;
+  transform: translate(0, -50%);
+  animation: opacityAnimation 0.2s ease-in-out;
+}
+.arrowToolTip .triangle {
+  float: left;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-right: 30px solid black;
+  border-bottom: 15px solid transparent;
+  opacity: 0.6;
+}
+.arrowToolTip .ttBody {
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+  float: left;
+  background-color: black;
+  opacity: 0.6;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
 /*# sourceMappingURL=index.css.map */
