@@ -2,23 +2,23 @@
     padding-top: 50px
 
     .product-header
-        font-size: 22px
+        font-size: 25px
         font-weight: bold
 
     .product__title
+        @extend %shadow__layout
         margin-top: 10px
-        box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.25)
-        border-radius: 5px
-        display: inline-block
         height: 100%
         width: 100%
         padding: 10px 10px 10px 7px
-        position: relative
 
         .right-logo
             position: absolute
             right: 10px
             top: 10px
+
+        .right-logo__logo img
+            max-height: 60px
 
         .title__main-image
             display: inline-block
@@ -27,6 +27,7 @@
             display: inline-block
             vertical-align: top
             font-size: 16px
+            width: 370px
 
     .title__image-miniatures
         position: absolute
@@ -40,11 +41,10 @@
                 left: -7px
 
     .top__layout
-        box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.25)
-        border-radius: 5px
+        @extend %shadow__layout
         margin-top: 20px
         padding: 10px
-        position: relative
+        width: 370px
         .layout__text
             color: #6E81FA
             font-size: 26px
@@ -63,3 +63,19 @@
                 text-align: center
                 color: white
                 background-color: #6E81FA
+
+    .product__middle
+        @extend %shadow__layout
+        margin-top: 20px
+        width: 100%
+        padding: 20px
+        .middle__header
+            font-size: 22px
+            padding-bottom: 20px
+            font-weight: bold
+
+%shadow__layout
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.25)
+    border-radius: 5px
+    display: inline-block
+    position: relative
