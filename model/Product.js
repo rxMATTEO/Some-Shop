@@ -23,10 +23,6 @@ const Product = sequelize.define("Product", {
   imagePath: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-  viewsCount: {
-    type: Sequelize.INTEGER,
-    allowNull: false
   }
 });
 
