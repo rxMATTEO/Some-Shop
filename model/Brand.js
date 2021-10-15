@@ -3,7 +3,7 @@ const Product = require("./Product.js");
 const {Sequelize} = require('sequelize');
 const sequelize = require('../app.js').sequelize;
 
-const Brand = sequelize.define("Brand", {
+const Brands = sequelize.define("Brands", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -19,7 +19,4 @@ const Brand = sequelize.define("Brand", {
     allowNull: false
   }
 });
-
-Brand.hasMany(Product);
-
-module.exports = Brand;
+module.exports = Brands;
