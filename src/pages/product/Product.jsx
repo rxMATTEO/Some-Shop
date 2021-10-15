@@ -1,12 +1,47 @@
 import React from 'react';
 import Header from "../../header/Header.jsx";
 import NavMenu from "../../nav-menu/NavMenu.jsx";
-import "./index.sass";
+import "./product.sass";
 import "../../index.sass";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import * as ReactDOM from "react-dom";
+import NotFound from "../not-found/NotFound.jsx";
+import HoverToolTip from "../../input/HoverToolTip.jsx";
+import Footer from "../../footer/Footer.jsx";
 
 class Product extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { product: {}, brand: {}, isToolTipVisible: false };
+    this.fetchData();
+  }
+
+  fetchData(){
+    fetch("http://localhost:3000/products/" + this.props.match.params.id, {
+      method: "GET"
+    }).then( res => {
+      if(res.status === 404){
+        ReactDOM.render(<NotFound />, document.getElementById('root'));
+        return;
+      }
+      return res.json();
+    }).then( (res) => {
+      this.setState({product: res});
+    });
+    fetch(`http://localhost:3000/products?brand=${this.props.match.params.id}`, {method: "GET"})
+      .then(
+        res => {
+          if(res.status === 404){
+            ReactDOM.render(<NotFound />, document.getElementById('root'));
+            return;
+          }
+          return res.json();
+        }
+      ).then(
+        res => {
+          this.setState({brand: res});
+        }
+    )
   }
 
   render() {
@@ -16,7 +51,7 @@ class Product extends React.Component {
         <NavMenu />
         <div className="content product">
           <div className="product-header">
-            {this.props.header}
+            {this.state.product.name}
           </div>
           <div className="product__title">
             <div className="title__image-miniatures">
@@ -37,13 +72,13 @@ class Product extends React.Component {
               </div>
             </div>
             <div className="title__main-image">
-              <img src="https://c.dns-shop.ru/thumb/st1/fit/500/500/cdb0ed2b7ed3fb3fb19c25ae7c303f55/c9749f32779e959f9d6363c645a25a1cf14c27f17c2a445b6618b16fd3d85941.jpg" />
+              <img src={this.state.product.imagePath} />
             </div>
             <div className="title__top">
-              <span className="top__text">{this.props.title}</span>
+              <span className="top__text">{"12400 dpi, светодиодный, USB, кнопки - 6 подробнее"}</span>
               <div className="top__layout">
                 <div className="layout__text">
-                  <span>{this.props.price}</span>
+                  <span>{this.state.product.price}</span>
                 </div>
                 <div className="layout__button">
                   <span className="button__text">Купить</span>
@@ -52,11 +87,18 @@ class Product extends React.Component {
             </div>
             <div className="right-logo">
               <a className="right-logo__logo" href="#">
-                <img src={this.props.productLogo} height="50px" width="50px" data-tooltip="a" />
+                <img src={this.state.brand.imagePath} height="100%" width="100px" data-tooltip={"Перейти на страницу " + this.state.brand.name}/>
               </a>
             </div>
           </div>
+          <div className="product__middle">
+            <p className="middle__header">
+              {"Описание " + this.state.product.name}
+            </p>
+            {this.state.product.description}
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }
