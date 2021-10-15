@@ -15,7 +15,7 @@ class PopularProductContainer extends React.Component {
     }).then( res => res.json()).then( (res) => {
       let arr = [];
       for (let item of res) {
-        arr.push( <Product price={item.price} desc={item.name} imgSrc={item.imagePath} /> );
+        arr.push( <Product price={item.price} desc={item.name} imgSrc={item.imagePath} id={item.id} /> );
       }
       this.setState({items: arr});
     });
