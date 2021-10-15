@@ -9,7 +9,7 @@ class Product extends React.Component {
 
   render() {
     return (
-      <a className="popular-product" href="#" onDragStart={ (e) => e.preventDefault() }>
+      <a className="popular-product" href={"products/" + this.props.id} onDragStart={ (e) => e.preventDefault() }>
         <div className="product-img">
           <img src={this.props.imgSrc} alt={this.props.desc} onDragStart={ (e) => e.preventDefault() } />
         </div>
