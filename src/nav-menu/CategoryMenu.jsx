@@ -35,7 +35,7 @@ class CategoryMenu extends React.Component {
         <div style={{ display: "inline-block", padding: "0 20px 20px 0" }}>
           {
             this.getHoveredItemOrFirst()?.product?.map(
-              (item) => <CategoryItem imgSrc={item.imgSrc} header={item.header} brands={item.brands} />
+              (item) => <CategoryItem imgSrc={item.imgSrc} header={item.header.split(',')[0]} brands={item.brands} api={item.header.split(',')[1]}/>
             )
           }
         </div>
