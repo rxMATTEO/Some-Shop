@@ -30,7 +30,7 @@ class NavMenu extends React.Component {
   render() {
     const pcParts = [
       getCategoryItem('Комплектующие для ПК', [ {imgSrc: 'https://c.dns-shop.ru/thumb/st1/fit/220/150/9f2382f80196fe69081442ae4995c60d/b70d20da48dfebda15c88f04044237bfa6234fe05d539ff68a61395785620202.jpg', header: 'Процессоры,CPU', brands: ['Intel', 'AMD']},
-        {imgSrc: 'https://c.dns-shop.ru/thumb/st4/fit/220/150/4aa1adddbd68bd0ac0739fff47327355/114d29cfe20f17933bac65e17c2edf53aeb4d5db5a0d683b5191195099eb437c.jpg', header: 'Материнские платы,Motherboards', brands: ['Gigabyte', 'ASUS', 'MSI']},
+        {imgSrc: 'https://c.dns-shop.ru/thumb/st4/fit/220/150/4aa1adddbd68bd0ac0739fff47327355/114d29cfe20f17933bac65e17c2edf53aeb4d5db5a0d683b5191195099eb437c.jpg', header: 'Материнские платы,Motherboard', brands: ['Gigabyte', 'ASUS', 'MSI']},
         {imgSrc: 'https://c.dns-shop.ru/thumb/st1/fit/220/150/be5b6c66e33224d6d712ad4c3b0f5f44/809d70b81f66d3f730c567c442e3ad98baeef227e15b2413dd3b0ca2c4afeca0.jpg', header: 'Видеокарты,GPU', brands: ['Palit', 'Gigabyte', 'MSI']}]),
       getCategoryItem('Ноутбуки', [ {imgSrc: 'https://c.dns-shop.ru/thumb/st1/fit/220/150/87ed6552e39aabcdddf89e767830c9c6/320a8e4b8a3227de8d22213d06e5804d890240c1461f614983570d175a0de9f2.jpg', header: 'Игровые ноутбуки,Gaming Notebook', brands: ['ASUS', 'MSI', 'OMEN']}])
     ];

@@ -4,6 +4,8 @@ import Header from "../../header/Header.jsx";
 import * as ReactDOM from "react-dom";
 import NotFound from "../not-found/NotFound.jsx";
 import Footer from "../../footer/Footer.jsx";
+import "./productCatalog.sass";
+import ProductRow from "../../input/ProductRow.jsx";
 
 class ProductCatalog extends React.Component {
   constructor(props) {
@@ -28,10 +30,24 @@ class ProductCatalog extends React.Component {
   }
 
   render() {
+    let { products } = this.state;
+    const productsArray = [];
+    if(Object.keys(products).length > 0){
+      for (let product of products) {
+        productsArray.push(
+          <ProductRow imgSrc={product.imagePath} header={product.name} price={product.price} id={product.id}/>
+        );
+      }
+    }
     return (
       <div>
         <Header />
         <NavMenu />
+        <div className="product-catalog content">
+          {
+            productsArray
+          }
+        </div>
         <Footer />
       </div>
     );
