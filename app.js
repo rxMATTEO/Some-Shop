@@ -67,6 +67,27 @@ app.get('/category/:categoryName', function (req, res){
   });
 });
 
+app.get("/subcategory/:subcategoryName", function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
+  const subcategory = req.params["subcategoryName"];
+  Subcategories.findOne({where: {name: subcategory}, raw: true}).then(
+    sub => {
+      if(!sub){
+        res.sendStatus(404);
+        return;
+      }
+      Product.findAll({where: {SubcategoryId: sub.id}, raw : true}).then(
+        products => {
+          res.json(products);
+        }
+      )
+    }
+  );
+});
+
 app.get("/popular-products", function (req, res){
   res.set({
     "Content-Type": "application/json",
