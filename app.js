@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const json = express.json();
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const sequelize = new Sequelize("SomeShop","admin","1234567",
   {
     dialect: "mssql",
@@ -39,6 +40,33 @@ sequelize.sync().then( res =>
   }
 );
 
+app.get('/category/:categoryName', function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
+  const categoryName = req.params["categoryName"];
+  Categories.findOne({where: {name: categoryName}, raw: true}).then( cat => {
+    Subcategories.findAll({where: {CategoryId: cat.id}}).then(
+      sub => {
+        Product.findAll().then(
+          result => {
+            let products = [];
+            for (let i = 0; i < result.length; i++) {
+              for (let j = 0; j < sub.length; j++) {
+                if(result[i].SubcategoryId == sub[j].id){
+                  products.push(result[i]);
+                }
+              }
+            }
+            res.json(products);
+          }
+        )
+      }
+    )
+  });
+});
+
 app.get("/popular-products", function (req, res){
   res.set({
     "Content-Type": "application/json",
@@ -56,7 +84,7 @@ app.get("/products/:id", function (req, res){
   });
   const id = req.params["id"];
   if(!isFinite(id)) {
-    res.sendStatus(404);
+    return res.sendStatus(404);
   } else {
     const product = Product.findByPk(id);
     product.then( data =>{
@@ -74,14 +102,16 @@ app.get("/categories", function (req, res){
   Categories.findAll({raw: true}).then( data => res.json(data) );
 });
 
-app.get("/products/", function (req, res){
+app.get("/products/", function (req, res) {
   res.set({
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*"
   });
   const id = req.query["brand"];
-  if(id){
-    Product.findByPk(id).then( data =>{
+  if (!isFinite(id)) {
+    return res.sendStatus(404);
+  } else {
+    Product.findByPk(id).then(data => {
       Brand.findByPk(data.BrandId).then(
         brand => {
           res.json(brand);
@@ -89,7 +119,6 @@ app.get("/products/", function (req, res){
       )
     });
   }
-  else res.sendStatus(404);
 });
 
 app.get("/:subcategory/:brand", function (req, res){

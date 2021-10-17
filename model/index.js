@@ -14,10 +14,12 @@ function apply(){
   Brand.hasMany(ProductTypes, { as: "Brands", foreignKey: "BrandsId" });
   ProductTypes.belongsTo(Brand, { foreignKey: "BrandsId" });
 
-  Categories.hasMany(Subcategories, { as:'Categories', foreignKey: "Categories"});
-  Subcategories.belongsTo(Categories, {foreignKey: "Categories"});
+  // Categories.hasMany(Subcategories, { as:'Categories', foreignKey: "Categories"});
+  // Subcategories.belongsTo(Categories, {foreignKey: "Categories"});
 
   Brand.hasOne(Product);
   Subcategories.hasOne(Product);
+
+  Categories.hasOne(Subcategories);
 }
 module.exports = apply;

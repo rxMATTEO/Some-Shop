@@ -11,11 +11,31 @@ class ProductCatalog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {products: {}};
-    this.fetchData();
+    if(props.match.path === '/:subcategory/:brand'){
+      this.fetchSubcategory();
+    }
+    else if(props.match.path === '/category/:categoryName'){
+      this.fetchCategoryProduct();
+    }
   }
 
-  fetchData(){
+  fetchSubcategory(){
     fetch(`http://localhost:3000/${this.props.match.params.subcategory}/${this.props.match.params.brand}`, {
+      method: "GET"
+    }).then( res => {
+      if(res.status === 404){
+        ReactDOM.render(<NotFound />, document.getElementById('root'));
+        return;
+      }
+      return res.json();
+    }).then( (res) => { // todo fix duplicate, remove api to methods
+      if(!res.length) ReactDOM.render(<NotFound />, document.getElementById('root'));
+      this.setState({products: res});
+    });
+  }
+
+  fetchCategoryProduct(){
+    fetch(`http://localhost:3000/category/${this.props.match.params.categoryName}`, {
       method: "GET"
     }).then( res => {
       if(res.status === 404){
