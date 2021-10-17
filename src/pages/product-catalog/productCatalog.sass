@@ -4,7 +4,7 @@
     .product-row
         width: 100%
         height: 225px
-        padding: 25px 5px
+        padding: 25px 20px
         @extend %shadow__layout
         &:not(:last-child)
             margin-bottom: 20px
@@ -12,14 +12,17 @@
         .product-row__top
             display: inline-block
             vertical-align: top
-            width: 370px
+            width: 400px
+            margin-left: 20px
 
         .product-row__img
             height: 100%
             display: inline-block
+            width: 200px
             img
                 display: inline-block
                 height: 100%
+                width: 100%
                 vertical-align: middle
 
         .product-row__header
@@ -28,6 +31,11 @@
             .header__text
                 font-size: 25px
                 font-weight: bold
+                overflow: hidden
+                text-overflow: ellipsis
+                display: -webkit-box
+                -webkit-line-clamp: 2
+                -webkit-box-orient: vertical
 
     .product-row__middle-layout
         @extend %shadow__layout
@@ -47,4 +55,8 @@
         padding: 5px 30px
         position: absolute
         right: 10px
+
+    .product__bottom
+        margin-top: 15px
+        svg
 
