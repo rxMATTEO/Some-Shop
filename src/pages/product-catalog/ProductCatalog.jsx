@@ -77,6 +77,8 @@ class ProductCatalog extends React.Component {
         );
       }
     }
+    if(this.state.product) document.title = this.state.product.name;
+
     return (
       <div>
         <Header />

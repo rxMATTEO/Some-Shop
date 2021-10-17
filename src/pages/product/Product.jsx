@@ -45,6 +45,7 @@ class Product extends React.Component {
   }
 
   render() {
+    if(this.state.product.name) document.title = this.state.product.name;
     return (
       <div>
         <Header />
