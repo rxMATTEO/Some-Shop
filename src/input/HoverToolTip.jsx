@@ -16,6 +16,7 @@ class HoverToolTip extends React.Component {
           this.setState({rotate: 180});
         }
         else coords.left = rect.left + e.target.offsetWidth;
+        coords.top += pageYOffset;
         this.setState({coords: coords});
       }
       else this.setState({vis: false});
