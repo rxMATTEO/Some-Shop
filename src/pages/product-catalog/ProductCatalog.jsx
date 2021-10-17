@@ -17,6 +17,9 @@ class ProductCatalog extends React.Component {
     else if(props.match.path === '/category/:categoryName'){
       this.fetchCategoryProduct();
     }
+    else if(props.match.path === '/subcategory/:subcategoryName'){
+      this.fetchSubcategoryProduct();
+    }
   }
 
   fetchSubcategory(){
@@ -36,6 +39,21 @@ class ProductCatalog extends React.Component {
 
   fetchCategoryProduct(){
     fetch(`http://localhost:3000/category/${this.props.match.params.categoryName}`, {
+      method: "GET"
+    }).then( res => {
+      if(res.status === 404){
+        ReactDOM.render(<NotFound />, document.getElementById('root'));
+        return;
+      }
+      return res.json();
+    }).then( (res) => { // todo fix duplicate, remove api to methods
+      if(!res.length) ReactDOM.render(<NotFound />, document.getElementById('root'));
+      this.setState({products: res});
+    });
+  }
+
+  fetchSubcategoryProduct(){
+    fetch(`http://localhost:3000/subcategory/${this.props.match.params.subcategoryName}`, {
       method: "GET"
     }).then( res => {
       if(res.status === 404){
