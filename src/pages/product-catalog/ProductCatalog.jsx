@@ -22,7 +22,7 @@ class ProductCatalog extends React.Component {
     if(Object.keys(products).length > 0){
       for (let product of products) {
         productsArray.push(
-          <ProductRow imgSrc={product.imagePath} header={product.name} price={product.price} id={product.id}/>
+          <ProductRow imgSrc={product.imagePath} header={product.name} price={product.price} id={product.id} rating={product.rating}/>
         );
       }
     }
