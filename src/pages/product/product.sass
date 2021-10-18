@@ -42,36 +42,39 @@
                 border-left: 7px solid #6E81FA
                 left: -7px
 
-    .top__layout
-        @extend %shadow__layout
-        margin-top: 20px
-        padding: 10px
-        width: 370px
-        .layout__text
-            color: #6E81FA
-            font-size: 26px
-            display: inline-block
-            &:after
-                content: "p"
-        .layout__button
+.top__layout
+    @extend %shadow__layout
+    margin-top: 20px
+    padding: 10px
+    width: 370px
+    .layout__text
+        color: #6E81FA
+        font-size: 26px
+        display: inline-block
+        &:after
+            content: "p"
+    .layout__button
+        background-color: #6E81FA
+        cursor: pointer
+        display: inline-block
+        border-radius: 5px
+        padding: 5px 30px
+        position: absolute
+        right: 10px
+        .button__text
+            text-align: center
+            color: white
             background-color: #6E81FA
-            cursor: pointer
-            display: inline-block
-            border-radius: 5px
-            padding: 5px 30px
-            position: absolute
-            right: 10px
-            .button__text
-                text-align: center
-                color: white
-                background-color: #6E81FA
 
-    .product__middle
-        @extend %shadow__layout
-        margin-top: 20px
-        width: 100%
-        padding: 20px
-        .middle__header
-            font-size: 22px
-            padding-bottom: 20px
-            font-weight: bold
+.product__middle
+    @extend %shadow__layout
+    margin-top: 20px
+    width: 100%
+    padding: 20px
+    .middle__header
+        font-size: 22px
+        padding-bottom: 20px
+        font-weight: bold
+
+.top__stars
+    margin-top: 10px

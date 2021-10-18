@@ -23,6 +23,10 @@ const Product = sequelize.define("Product", {
   imagePath: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  rating: {
+    type: Sequelize.INTEGER,
+    allowNull: true
   }
 });
 

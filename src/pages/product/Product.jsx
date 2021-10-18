@@ -9,6 +9,9 @@ import NotFound from "../not-found/NotFound.jsx";
 import HoverToolTip from "../../input/HoverToolTip.jsx";
 import Footer from "../../footer/Footer.jsx";
 import fetchJSON from "../../fetchJSON.js";
+import BuyLayout from "../../input/BuyLayout.jsx";
+import Star from "../../input/Star.jsx";
+import StarRating from "../../input/StarRating.jsx";
 
 class Product extends React.Component {
   constructor(props) {
@@ -20,6 +23,7 @@ class Product extends React.Component {
 
   render() {
     if(this.state.product.name) document.title = this.state.product.name;
+
     return (
       <div>
         <Header />
@@ -51,13 +55,9 @@ class Product extends React.Component {
             </div>
             <div className="title__top">
               <span className="top__text">{"12400 dpi, светодиодный, USB, кнопки - 6 подробнее"}</span>
-              <div className="top__layout">
-                <div className="layout__text">
-                  <span>{this.state.product.price}</span>
-                </div>
-                <div className="layout__button">
-                  <span className="button__text">Купить</span>
-                </div>
+              <BuyLayout price={this.state.product.price} />
+              <div className="top__stars">
+                <StarRating rating={this.state.product.rating} />
               </div>
             </div>
             <div className="right-logo">
