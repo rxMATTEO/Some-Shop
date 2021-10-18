@@ -6,65 +6,14 @@ import NotFound from "../not-found/NotFound.jsx";
 import Footer from "../../footer/Footer.jsx";
 import "./productCatalog.sass";
 import ProductRow from "../../input/ProductRow.jsx";
+import configuration from "../../configuration.js";
+import fetchJSON from "../../fetchJSON.js";
 
 class ProductCatalog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {products: {}};
-    if(props.match.path === '/:subcategory/:brand'){
-      this.fetchSubcategory();
-    }
-    else if(props.match.path === '/category/:categoryName'){
-      this.fetchCategoryProduct();
-    }
-    else if(props.match.path === '/subcategory/:subcategoryName'){
-      this.fetchSubcategoryProduct();
-    }
-  }
-
-  fetchSubcategory(){
-    fetch(`http://localhost:3000/${this.props.match.params.subcategory}/${this.props.match.params.brand}`, {
-      method: "GET"
-    }).then( res => {
-      if(res.status === 404){
-        ReactDOM.render(<NotFound />, document.getElementById('root'));
-        return;
-      }
-      return res.json();
-    }).then( (res) => { // todo fix duplicate, remove api to methods
-      if(!res.length) ReactDOM.render(<NotFound />, document.getElementById('root'));
-      this.setState({products: res});
-    });
-  }
-
-  fetchCategoryProduct(){
-    fetch(`http://localhost:3000/category/${this.props.match.params.categoryName}`, {
-      method: "GET"
-    }).then( res => {
-      if(res.status === 404){
-        ReactDOM.render(<NotFound />, document.getElementById('root'));
-        return;
-      }
-      return res.json();
-    }).then( (res) => { // todo fix duplicate, remove api to methods
-      if(!res.length) ReactDOM.render(<NotFound />, document.getElementById('root'));
-      this.setState({products: res});
-    });
-  }
-
-  fetchSubcategoryProduct(){
-    fetch(`http://localhost:3000/subcategory/${this.props.match.params.subcategoryName}`, {
-      method: "GET"
-    }).then( res => {
-      if(res.status === 404){
-        ReactDOM.render(<NotFound />, document.getElementById('root'));
-        return;
-      }
-      return res.json();
-    }).then( (res) => { // todo fix duplicate, remove api to methods
-      if(!res.length) ReactDOM.render(<NotFound />, document.getElementById('root'));
-      this.setState({products: res});
-    });
+    fetchJSON(this.props.location.pathname, (result) => this.setState({ products: result }));
   }
 
   render() {

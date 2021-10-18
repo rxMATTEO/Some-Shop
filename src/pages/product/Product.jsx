@@ -8,40 +8,14 @@ import * as ReactDOM from "react-dom";
 import NotFound from "../not-found/NotFound.jsx";
 import HoverToolTip from "../../input/HoverToolTip.jsx";
 import Footer from "../../footer/Footer.jsx";
+import fetchJSON from "../../fetchJSON.js";
 
 class Product extends React.Component {
   constructor(props) {
     super(props);
     this.state = { product: {}, brand: {}, isToolTipVisible: false };
-    this.fetchData();
-  }
-
-  fetchData(){
-    fetch("http://localhost:3000/products/" + this.props.match.params.id, {
-      method: "GET"
-    }).then( res => {
-      if(res.status === 404){
-        ReactDOM.render(<NotFound />, document.getElementById('root'));
-        return;
-      }
-      return res.json();
-    }).then( (res) => {
-      this.setState({product: res});
-    });
-    fetch(`http://localhost:3000/products?brand=${this.props.match.params.id}`, {method: "GET"})
-      .then(
-        res => {
-          if(res.status === 404){
-            ReactDOM.render(<NotFound />, document.getElementById('root'));
-            return;
-          }
-          return res.json();
-        }
-      ).then(
-        res => {
-          this.setState({brand: res});
-        }
-    )
+    fetchJSON(this.props.location.pathname, (result) => this.setState({ product: result }));
+    fetchJSON(`/products?brand=${this.props.match.params.id}`, (result) => this.setState({ brand: result }));
   }
 
   render() {
