@@ -9,14 +9,14 @@ class HoverToolTip extends React.Component {
       if(tooltip){
         const rect = e.target.getBoundingClientRect();
         this.setState({ vis: true, text: tooltip});
-        let coords = { top: (rect.top + e.target.offsetHeight / 2) };
+        let coords = { top: ( e.clientY ) };
         if(document.body.offsetWidth - rect.left < 250){
-          coords.left = rect.left - 250;
+          coords.left = e.clientX - 280;
           coords.top -= e.target.offsetHeight / 2;
+          coords.top += pageYOffset;
           this.setState({rotate: 180});
         }
-        else coords.left = rect.left + e.target.offsetWidth;
-        coords.top += pageYOffset;
+        else coords.left = e.clientX + e.target.offsetWidth;
         this.setState({coords: coords});
       }
       else this.setState({vis: false});
