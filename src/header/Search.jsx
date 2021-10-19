@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from "./SearchBar.jsx";
 import Button from "../input/Button.jsx";
+import ProductCatalog from "../pages/product-catalog/ProductCatalog.jsx";
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.onScroll = this.onScroll.bind(this);
+    this.onSearch = this.onSearch.bind(this);
     window.addEventListener('scroll', this.onScroll);
-    this.state = { style: { top: "60px",marginTop: "" } };
+    this.state = { style: { top: "60px",marginTop: "", searchQuery: "" } };
   }
 
   onScroll(e){
@@ -16,6 +18,10 @@ class Search extends React.Component {
       this.setState({ style: { top: 0, marginTop: 0, boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" } });
     }
     else this.setState({ style: { top: "60px", marginTop: "", boxShadow: "none" } })
+  }
+
+  onSearch(e){
+    this.setState({searchQuery: e.target.value});
   }
 
   render() {
@@ -29,8 +35,10 @@ class Search extends React.Component {
                 <img src="/./image.png" className="shop-logo"/>
               </a>
             </div>
-            <SearchBar />
-            <Button className={"search-button"} text={"Найти"}/>
+            <SearchBar onSearch={this.onSearch}/>
+            <Button className={"search-button"} text={"Найти"} onClick={ () => {
+              ReactDOM.render(<ProductCatalog location={ {pathname: "/search?query=" + this.state.searchQuery } }/>, document.getElementById('root'))
+            } } />
           </div>
         </div>
       </div>
