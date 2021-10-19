@@ -40,11 +40,15 @@ sequelize.sync().then( res =>
   }
 );
 
-app.get('/category/:categoryName', function (req, res){
+app.use(function(req,res, next){
   res.set({
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*"
   });
+  next();
+});
+
+app.get('/category/:categoryName', function (req, res){
   const categoryName = req.params["categoryName"];
   Categories.findOne({where: {name: categoryName}, raw: true}).then( cat => {
     Subcategories.findAll({where: {CategoryId: cat.id}}).then(
@@ -67,17 +71,13 @@ app.get('/category/:categoryName', function (req, res){
   });
 });
 
-app.get("/subcategory/:subcategoryName", function (req, res){
-  res.set({
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
-  });
+app.get("/subcategory/:subcategoryName", function (req, res, next){
   const subcategory = req.params["subcategoryName"];
   Subcategories.findOne({where: {name: subcategory}, raw: true}).then(
     sub => {
       if(!sub){
         res.sendStatus(404);
-        return;
+        next();
       }
       Product.findAll({where: {SubcategoryId: sub.id}, raw : true}).then(
         products => {
@@ -89,23 +89,16 @@ app.get("/subcategory/:subcategoryName", function (req, res){
 });
 
 app.get("/popular-products", function (req, res){
-  res.set({
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
-  });
   Product.findAll({raw: true}).then( data =>{
     res.json(data);
   });
 });
 
-app.get("/products/:id", function (req, res){
-  res.set({
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
-  });
+app.get("/products/:id", function (req, res, next){
   const id = req.params["id"];
   if(!isFinite(id)) {
-    return res.sendStatus(404);
+    res.sendStatus(404);
+    next();
   } else {
     const product = Product.findByPk(id);
     product.then( data =>{
@@ -116,21 +109,14 @@ app.get("/products/:id", function (req, res){
 });
 
 app.get("/categories", function (req, res){
-  res.set({
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
-  });
   Categories.findAll({raw: true}).then( data => res.json(data) );
 });
 
-app.get("/products/", function (req, res) {
-  res.set({
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
-  });
-  const id = req.query["brand"];
+app.get("/brands", function (req, res, next) {
+  const id = req.query["id"];
   if (!isFinite(id)) {
-    return res.sendStatus(404);
+    res.sendStatus(404);
+    next();
   } else {
     Product.findByPk(id).then(data => {
       Brand.findByPk(data.BrandId).then(
@@ -142,25 +128,21 @@ app.get("/products/", function (req, res) {
   }
 });
 
-app.get("/:subcategory/:brand", function (req, res){
-  res.set({
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
-  });
+app.get("/:subcategory/:brand", function (req, res, next){
   const subcategory = req.params["subcategory"];
   const brand = req.params["brand"];
   Subcategories.findOne({where: {name: subcategory}, raw: true}).then(
     sub => {
       if(!sub){
         res.sendStatus(404);
-        return;
-      }
+        next();
+      } else
       Brand.findOne({where: {name: brand}, raw : true}).then(
         brand => {
           if(!brand) {
             res.sendStatus(404);
-            return;
-          }
+            next();
+          } else
           Product.findAll({where: {brandId: brand.id, SubcategoryId: sub.id}, raw : true}).then(
             products => {
               if(products) res.json(products);
@@ -168,6 +150,24 @@ app.get("/:subcategory/:brand", function (req, res){
           )
         }
       )
+    }
+  );
+});
+
+app.get("/products", function (req, res, next){
+  const brandId = req.query["brandId"];
+  if(!brandId){
+    next();
+    return;
+  }
+  Product.findAll({where: {brandId: brandId}, raw: true}).then(
+    products => {
+      if(!products){
+        res.sendStatus(404);
+        next();
+      } else{
+        res.json(products);
+      }
     }
   );
 });

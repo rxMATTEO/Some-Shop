@@ -18,7 +18,11 @@ class Product extends React.Component {
     super(props);
     this.state = { product: {}, brand: {}, isToolTipVisible: false };
     fetchJSON(this.props.location.pathname, (result) => this.setState({ product: result }));
-    fetchJSON(`/products?brand=${this.props.match.params.id}`, (result) => this.setState({ brand: result }));
+    fetchJSON(`/brands?id=${this.props.match.params.id}`, (result) =>
+    {
+      this.setState({ brand: result });
+      console.log(result);
+    });
   }
 
   render() {
