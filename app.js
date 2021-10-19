@@ -154,8 +154,8 @@ app.get("/:subcategory/:brand", function (req, res, next){
   );
 });
 
-app.get("/products", function (req, res, next){
-  const brandId = req.query["brandId"];
+app.get("/products/:productId/brand/:brandId", function (req, res, next){
+  const brandId = req.params["brandId"];
   if(!brandId){
     next();
     return;

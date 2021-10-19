@@ -12,10 +12,11 @@ class App extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route path="/products/:id" component={Product} />
+          <Route path="/products/:id" exact component={Product} />
           <Route path="/category/:categoryName" component={ProductCatalog} />
           <Route path="/:subcategory/:brand" component={ProductCatalog} />
           <Route path="/subcategory/:subcategoryName" component={ProductCatalog} />
+          <Route path="/products/:productId/brand/:brandId" component={ProductCatalog}/>
           <Route component={NotFound} />
         </Switch>
         <HoverToolTip />
