@@ -65,8 +65,8 @@ class Product extends React.Component {
               </div>
             </div>
             <div className="right-logo">
-              <a className="right-logo__logo" href="#">
-                <img src={this.state.brand.imagePath} height="100%" width="100px" data-tooltip={"Перейти на страницу " + this.state.brand.name}/>
+              <a className="right-logo__logo" href={"/products/" + this.state.product.id + "/brand/" + this.state.brand.id}>
+                <img src={this.state.brand.imagePath} height="100%" width="100px" data-tooltip={"Перейти на страницу " + this.state.brand.name} alt={this.state.brand.name}/>
               </a>
             </div>
           </div>

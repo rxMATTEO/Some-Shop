@@ -26,7 +26,7 @@ class Search extends React.Component {
           <div className="content" style={{display: "flex", justifyContent: "space-between", top: "10px", position: "relative", height: "10px"}}>
             <div>
               <a href="/">
-                <img src="../../image.png" className="shop-logo"/>
+                <img src="/./image.png" className="shop-logo"/>
               </a>
             </div>
             <SearchBar />
