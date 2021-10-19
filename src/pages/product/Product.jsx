@@ -2,7 +2,6 @@ import React from 'react';
 import Header from "../../header/Header.jsx";
 import NavMenu from "../../nav-menu/NavMenu.jsx";
 import "./product.sass";
-import "../../index.sass";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import * as ReactDOM from "react-dom";
 import NotFound from "../not-found/NotFound.jsx";

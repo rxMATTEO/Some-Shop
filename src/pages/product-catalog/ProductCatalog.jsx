@@ -1,18 +1,15 @@
 import React from 'react';
 import NavMenu from "../../nav-menu/NavMenu.jsx";
 import Header from "../../header/Header.jsx";
-import * as ReactDOM from "react-dom";
-import NotFound from "../not-found/NotFound.jsx";
 import Footer from "../../footer/Footer.jsx";
 import "./productCatalog.sass";
 import ProductRow from "../../input/ProductRow.jsx";
-import configuration from "../../configuration.js";
 import fetchJSON from "../../fetchJSON.js";
 
 class ProductCatalog extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {products: {}};
+    this.state = {products: {}, header: ""};
     fetchJSON(this.props.location.pathname, (result) => this.setState({ products: result }));
   }
 
@@ -26,7 +23,7 @@ class ProductCatalog extends React.Component {
         );
       }
     }
-    if(this.state.product) document.title = this.state.product.name;
+    document.title = this.props.header || this.state.product?.name || "Some shop";
 
     return (
       <div>

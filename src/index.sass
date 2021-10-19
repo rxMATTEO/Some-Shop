@@ -17,6 +17,7 @@ html,body
 a
     color: initial
 
+@import "./input/shadow-layout"
 .content
     max-width: 1680px
     margin: 0 auto
@@ -185,7 +186,7 @@ a
         width: 250px
         display: inline-block
         flex: 0 0 16%
-        height: 100%
+        height: 310px
         .product-img
             margin: auto
             text-align: center
@@ -203,11 +204,17 @@ a
             color: white
             display: inline-block
             width: 100%
-            height: 50%
+            max-height: 50%
             .product-price
                 font-size: 22px
             .product-desc
                 padding: 20px 0
+                height: 20px
+                overflow: hidden
+                text-overflow: ellipsis
+                display: -webkit-box
+                -webkit-line-clamp: 2
+                -webkit-box-orient: vertical
             .product-button
                 background-color: #68C9FF
                 border-radius: 5px
@@ -264,9 +271,3 @@ a
         opacity: .6
         color: white
         border-radius: 0 5px 5px 0
-
-%shadow__layout
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.25)
-    border-radius: 5px
-    display: inline-block
-    position: relative
