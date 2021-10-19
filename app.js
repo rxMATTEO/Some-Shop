@@ -171,3 +171,23 @@ app.get("/products/:productId/brand/:brandId", function (req, res, next){
     }
   );
 });
+
+app.get("/search", function (req, res, next){
+  const query = req.query["query"];
+  if(!query){
+    next();
+    return;
+  }
+  Product.findAll({where: {
+      [Op.or] : [ {name: { [Op.like]: `%${query}%` }},{description: { [Op.like]: `%${query}%` }}]
+    }, raw: true}).then(
+    products => {
+      if(!products){
+        res.sendStatus(404);
+        next();
+      } else{
+        res.json(products);
+      }
+    }
+  );
+});
