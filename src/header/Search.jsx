@@ -25,6 +25,7 @@ class Search extends React.Component {
   }
 
   render() {
+    const { searchQuery } = this.state;
     return (
       //todo remove inline styles
       <div style={{display: "inline-block", height: "50px", width: "100%"}}>
@@ -37,7 +38,7 @@ class Search extends React.Component {
             </div>
             <SearchBar onSearch={this.onSearch}/>
             <Button className={"search-button"} text={"Найти"} onClick={ () => {
-              ReactDOM.render(<ProductCatalog location={ {pathname: "/search?query=" + this.state.searchQuery } }/>, document.getElementById('root'))
+              ReactDOM.render(<ProductCatalog header={"Поиск по запросу: " + searchQuery} location={ {pathname: "/search?query=" + searchQuery } }/>, document.getElementById('root'))
             } } />
           </div>
         </div>
