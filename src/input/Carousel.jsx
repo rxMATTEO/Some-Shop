@@ -5,7 +5,7 @@ import ArrowButton from "./ArrowButton.jsx";
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { right: 0, transition: "", maxWidth: this.props.items.length * this.props.offset };
+    this.state = { right: 0, transition: "", maxWidth: this.props.items.length * this.props.offset, oldPosition: 0 };
 
     const possibleRight = [];
     for (let i = 0; i < this.props.items.length; i++){
@@ -42,6 +42,7 @@ class Carousel extends React.Component {
 
   onMouseDown(e){
     this.setState({ transition: "none" });
+    this.setState({ oldPosition: e.pageX });
     this.func = (e) => this.onMouseMove(e);
     this.setState({ zero: e.pageX + this.state.right });
     window.addEventListener('mousemove', this.func);
@@ -55,6 +56,9 @@ class Carousel extends React.Component {
   }
 
   onMouseUp(e){
+    e.target.onclick = (e) => {
+      if(e.pageX !== this.state.oldPosition) e.preventDefault();
+    };
     window.removeEventListener('mousemove', this.func);
     let { right } = this.state;
     const correctRightIndex = this.possibleRight.findIndex( item => right < item );
