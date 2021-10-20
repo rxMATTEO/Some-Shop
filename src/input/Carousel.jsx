@@ -46,7 +46,7 @@ class Carousel extends React.Component {
     this.func = (e) => this.onMouseMove(e);
     this.setState({ zero: e.pageX + this.state.right });
     window.addEventListener('mousemove', this.func);
-    window.addEventListener('mouseup', this.onMouseUp);
+    window.addEventListener('mouseup', this.onMouseUp, { once: true });
   }
 
   onMouseMove(e){
@@ -57,7 +57,7 @@ class Carousel extends React.Component {
 
   onMouseUp(e){
     e.target.onclick = (e) => {
-      if(e.pageX !== this.state.oldPosition) e.preventDefault();
+      if (e.pageX !== this.state.oldPosition) e.preventDefault();
     };
     window.removeEventListener('mousemove', this.func);
     let { right } = this.state;
