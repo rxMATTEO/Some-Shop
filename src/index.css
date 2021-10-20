@@ -248,12 +248,9 @@ a {
 }
 .popular-product-container .popular-product .product-bottom .product-desc {
   padding: 20px 0;
-  height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
 }
 .popular-product-container .popular-product .product-bottom .product-button {
   background-color: #68C9FF;
