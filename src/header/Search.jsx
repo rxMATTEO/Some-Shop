@@ -31,8 +31,8 @@ class Search extends React.Component {
       <div style={{display: "inline-block", height: "50px", width: "100%"}}>
         <div className="search" style={{ top: this.state.style.top, marginTop: this.state.style.marginTop, boxShadow: this.state.style.boxShadow }}>
           <div className="content" style={{display: "flex", justifyContent: "space-between", top: "10px", position: "relative", height: "10px"}}>
-            <div>
-              <a href="/">
+            <div style={{display: "inline-block", height: "100%"}}>
+              <a href="/" style={{display: "inline-block", height: "inherit"}}>
                 <img src="/./image.png" className="shop-logo"/>
               </a>
             </div>

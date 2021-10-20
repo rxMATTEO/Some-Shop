@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 * {
   box-sizing: border-box;
   margin-block-start: 0;
@@ -102,7 +103,8 @@ a {
   position: relative;
   margin-top: 20px;
   color: white;
-  text-wrap: avoid;
+  font-family: "PT Sans";
+  font-size: 0.9em;
 }
 .nav-menu .nav-item {
   width: calc(100%/6);
