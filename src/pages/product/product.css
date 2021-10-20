@@ -4,7 +4,19 @@
   display: inline-block;
   position: relative;
 }
+.product__middle:hover, .top__layout:hover, .product .product__title:hover {
+  box-shadow: 0 2px 4px 2px #7F6FE3;
+  animation: animation ease-in-out 0.2s;
+}
 
+@keyframes animation {
+  from {
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.25);
+  }
+  to {
+    box-shadow: 0 2px 4px 2px #7F6FE3;
+  }
+}
 .product {
   padding-top: 50px;
 }

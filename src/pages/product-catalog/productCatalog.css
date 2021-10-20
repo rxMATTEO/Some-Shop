@@ -4,7 +4,19 @@
   display: inline-block;
   position: relative;
 }
+.product-catalog .product-row__middle-layout:hover, .product-catalog .product-row:hover {
+  box-shadow: 0 2px 4px 2px #7F6FE3;
+  animation: animation ease-in-out 0.2s;
+}
 
+@keyframes animation {
+  from {
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.25);
+  }
+  to {
+    box-shadow: 0 2px 4px 2px #7F6FE3;
+  }
+}
 .product-catalog {
   margin-top: 50px;
 }

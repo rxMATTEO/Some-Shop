@@ -24,6 +24,25 @@ a {
   color: initial;
 }
 
+.popular-product-container .popular-product {
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  display: inline-block;
+  position: relative;
+}
+.popular-product-container .popular-product:hover {
+  box-shadow: 0 2px 4px 2px #7F6FE3;
+  animation: animation ease-in-out 0.2s;
+}
+
+@keyframes animation {
+  from {
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.25);
+  }
+  to {
+    box-shadow: 0 2px 4px 2px #7F6FE3;
+  }
+}
 .content {
   max-width: 1680px;
   margin: 0 auto;
@@ -216,6 +235,7 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   overflow: hidden;
+  padding: 0 0 5px 5px;
 }
 .popular-product-container .popular-product {
   width: 250px;
