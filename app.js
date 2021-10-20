@@ -76,8 +76,8 @@ app.get("/subcategory/:subcategoryName", function (req, res, next){
   Subcategories.findOne({where: {name: subcategory}, raw: true}).then(
     sub => {
       if(!sub){
-        res.sendStatus(404);
-        next();
+        res.writeHead(404);
+        res.end();
       }
       Product.findAll({where: {SubcategoryId: sub.id}, raw : true}).then(
         products => {
@@ -97,12 +97,12 @@ app.get("/popular-products", function (req, res){
 app.get("/products/:id", function (req, res, next){
   const id = req.params["id"];
   if(!isFinite(id)) {
-    res.sendStatus(404);
-    next();
+    res.writeHead(404);
+    res.end();
   } else {
     const product = Product.findByPk(id);
     product.then( data =>{
-      if(!data) res.sendStatus(404);
+      if(!data) res.writeHead(404);
       else res.json(data);
     });
   }
@@ -115,8 +115,8 @@ app.get("/categories", function (req, res){
 app.get("/brands", function (req, res, next) {
   const id = req.query["id"];
   if (!isFinite(id)) {
-    res.sendStatus(404);
-    next();
+    res.writeHead(404);
+    res.end();
   } else {
     Product.findByPk(id).then(data => {
       Brand.findByPk(data.BrandId).then(
@@ -134,14 +134,14 @@ app.get("/:subcategory/:brand", function (req, res, next){
   Subcategories.findOne({where: {name: subcategory}, raw: true}).then(
     sub => {
       if(!sub){
-        res.sendStatus(404);
+        res.writeHead(404);
         next();
       } else
       Brand.findOne({where: {name: brand}, raw : true}).then(
         brand => {
           if(!brand) {
-            res.sendStatus(404);
-            next();
+            res.writeHead(404);
+            res.end();
           } else
           Product.findAll({where: {brandId: brand.id, SubcategoryId: sub.id}, raw : true}).then(
             products => {
@@ -157,14 +157,14 @@ app.get("/:subcategory/:brand", function (req, res, next){
 app.get("/products/:productId/brand/:brandId", function (req, res, next){
   const brandId = req.params["brandId"];
   if(!brandId){
-    next();
+    res.end();
     return;
   }
   Product.findAll({where: {brandId: brandId}, raw: true}).then(
     products => {
       if(!products){
-        res.sendStatus(404);
-        next();
+        res.writeHead(404);
+        res.end();
       } else{
         res.json(products);
       }
@@ -175,7 +175,7 @@ app.get("/products/:productId/brand/:brandId", function (req, res, next){
 app.get("/search", function (req, res, next){
   const query = req.query["query"];
   if(!query){
-    next();
+    res.end();
     return;
   }
   Product.findAll({where: {
@@ -183,8 +183,8 @@ app.get("/search", function (req, res, next){
     }, raw: true}).then(
     products => {
       if(!products){
-        res.sendStatus(404);
-        next();
+        res.writeHead(404);
+        res.end();
       } else{
         res.json(products);
       }
