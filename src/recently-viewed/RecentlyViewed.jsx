@@ -24,7 +24,7 @@ class RecentlyViewed extends React.Component {
       <div className="content">
         <p className="container-label">Вы недавно смотрели</p>
         <div className="popular-product-container">
-          <Carousel offset="250" items={items} />
+          <Carousel offset="270" items={items} />
         </div>
       </div>
     );
