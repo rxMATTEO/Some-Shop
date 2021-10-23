@@ -9,8 +9,12 @@ class Search extends React.Component {
     super(props);
     this.onScroll = this.onScroll.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.onSearchBarFocus = this.onSearchBarFocus.bind(this);
+    this.onSearchBarBlur = this.onSearchBarBlur.bind(this);
+    this.handleEnter = this.handleEnter.bind(this);
     window.addEventListener('scroll', this.onScroll);
-    this.state = { style: { top: "60px",marginTop: "", searchQuery: "" } };
+
+    this.state = { style: { top: "60px",marginTop: "", searchQuery: "" }};
   }
 
   onScroll(e){
@@ -22,6 +26,24 @@ class Search extends React.Component {
 
   onSearch(e){
     this.setState({searchQuery: e.target.value});
+  }
+
+  onSearchButtonClick(searchQuery){
+    ReactDOM.render(<ProductCatalog header={"Поиск по запросу: " + searchQuery} location={ {pathname: "/search?query=" + searchQuery } }/>, document.getElementById('root'))
+  }
+
+  onSearchBarFocus(){
+    document.addEventListener('keydown', this.handleEnter);
+  }
+
+  onSearchBarBlur(){
+    document.removeEventListener('keydown', this.handleEnter);
+  }
+
+  handleEnter(e){
+    if (e.key === 'Enter') {
+      this.onSearchButtonClick(this.state.searchQuery);
+    }
   }
 
   render() {
@@ -36,10 +58,8 @@ class Search extends React.Component {
                 <img src="/./image.png" className="shop-logo"/>
               </a>
             </div>
-            <SearchBar onSearch={this.onSearch}/>
-            <Button className={"search-button"} text={"Найти"} onClick={ () => {
-              ReactDOM.render(<ProductCatalog header={"Поиск по запросу: " + searchQuery} location={ {pathname: "/search?query=" + searchQuery } }/>, document.getElementById('root'))
-            } } />
+            <SearchBar onFocus={ this.onSearchBarFocus } onBlur={ this.onSearchBarBlur } onSearch={ this.onSearch }/>
+            <Button className="search-button" text="Найти" onClick={ () => this.onSearchButtonClick(searchQuery) } />
           </div>
         </div>
       </div>

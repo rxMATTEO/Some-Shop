@@ -20,7 +20,6 @@ class Product extends React.Component {
     fetchJSON(`/brands?id=${this.props.match.params.id}`, (result) =>
     {
       this.setState({ brand: result });
-      console.log(result);
     });
   }
 

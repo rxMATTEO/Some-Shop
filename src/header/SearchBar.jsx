@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
   render() {
     if(this.props.onSearch)
     return (
-      <input type="search" className="searchbar" onChange={ (e) => this.props.onSearch(e) } />
+      <input type="search" className="searchbar" onFocus={ (e) => this.props.onFocus(e) } onBlur={ (e) => this.props.onBlur(e) } onChange={ (e) => this.props.onSearch(e) } />
     );
 
     return <input type="search" className="searchbar"/>;
