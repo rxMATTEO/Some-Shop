@@ -16,7 +16,10 @@ class Product extends React.Component {
   constructor(props) {
     super(props);
     this.state = { product: {}, brand: {}, isToolTipVisible: false };
-    fetchJSON(this.props.location.pathname, (result) => this.setState({ product: result }));
+    fetchJSON(this.props.location.pathname, (result) =>{
+      this.setState({ product: result });
+      fetchJSON(`/set-product-view?productId=${result.id}&views=${++result.viewsCount}`)
+    });
     fetchJSON(`/brands?id=${this.props.match.params.id}`, (result) =>
     {
       this.setState({ brand: result });
