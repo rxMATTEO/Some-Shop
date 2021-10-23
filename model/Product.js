@@ -27,6 +27,10 @@ const Product = sequelize.define("Product", {
   rating: {
     type: Sequelize.INTEGER,
     allowNull: true
+  },
+  viewsCount: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 });
 

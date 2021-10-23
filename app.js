@@ -26,19 +26,7 @@ const Subcategories = require("./model/Subcategories.js");
 sequelize.sync().then( res =>
 {
   console.log('SQL is connected');
-}).then(
-  () => {
-    Brand.findByPk(10).then(
-      brand => {
-        Product.findByPk(2).then(
-          prod => {
-            brand.setProduct(prod);
-          }
-        )
-      }
-    );
-  }
-);
+});
 
 app.use(function(req,res, next){
   res.set({
@@ -90,7 +78,7 @@ app.get("/subcategory/:subcategoryName", function (req, res, next){
 
 app.get("/popular-products", function (req, res){
   Product.findAll({raw: true}).then( data =>{
-    res.json(data);
+    res.json(data.sort( (a,b) => parseInt(a.viewsCount) < parseInt(b.viewsCount) ? 1 : -1 ));
   });
 });
 
@@ -175,9 +163,9 @@ app.get("/products/:productId/brand/:brandId", function (req, res, next){
 app.get("/search", function (req, res, next){
   const query = req.query["query"];
   if(!query){
+    res.writeHead(404);
     res.end();
-    return;
-  }
+  }else
   Product.findAll({where: {
       [Op.or] : [ {name: { [Op.like]: `%${query}%` }},{description: { [Op.like]: `%${query}%` }}]
     }, raw: true}).then(
@@ -190,4 +178,16 @@ app.get("/search", function (req, res, next){
       }
     }
   );
+});
+
+app.get("/set-product-view", function (req, res){
+  const productId = req.query["productId"];
+  const views = req.query["views"];
+  if(productId && views){
+    Product.update( {viewsCount: views}, { where:{ id: productId } } ).then(
+      () => {
+        res.json({isSuccess: true});
+      }
+    );
+}
 });
