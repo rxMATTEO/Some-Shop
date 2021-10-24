@@ -15,10 +15,15 @@ import StarRating from "../../input/StarRating.jsx";
 class Product extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: {}, brand: {}, isToolTipVisible: false };
+    this.state = { product: {}, brand: {}, user: {}, isToolTipVisible: false };
     fetchJSON(this.props.location.pathname, (result) =>{
       this.setState({ product: result });
-      fetchJSON(`/set-product-view?productId=${result.id}&views=${++result.viewsCount}`)
+      fetchJSON(`/set-product-view?productId=${result.id}&views=${++result.viewsCount}`);
+      fetchJSON(`/get-user?token=${localStorage.getItem('token')}`, (user) => {
+        if(!user || !result) return;
+        this.setState({user: user.user});
+        fetchJSON(`/append-view-to-history?userId=${user.user.id}&productId=${result.id}`);
+      });
     });
     fetchJSON(`/brands?id=${this.props.match.params.id}`, (result) =>
     {
