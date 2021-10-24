@@ -26,7 +26,7 @@ a
     display: flex
     justify-content: space-between
     padding: 10px 0
-    border-bottom: black solid 1px
+    border-bottom: #6E81FA solid 1px
     align-items: center
 
 .info-link
@@ -136,9 +136,7 @@ a
                     padding-bottom: 5px
             .brand
                 color: black
-                float: left
                 display: block
-                clear: both
                 padding-bottom: 2.5px
                 transition: color .2s ease-in-out
                 &:hover
@@ -207,6 +205,8 @@ a
             max-height: 50%
             .product-price
                 font-size: 22px
+                &:after
+                    content: 'р'
             .product-desc
                 padding: 20px 0
                 overflow: hidden
@@ -268,3 +268,23 @@ a
         opacity: .6
         color: white
         border-radius: 0 5px 5px 0
+
+#notifications
+    position: fixed
+    bottom: 0
+    z-index: 100
+    .notification
+        background-color: #6E81FA
+        padding: 10px
+        color: white
+        position: relative
+        .notification__close
+            display: inline-block
+            position: absolute
+            right: 10px
+            top: 0
+            font-size: 20px
+            font-weight: bold
+            cursor: pointer
+        .notification__text
+            margin-top: 10px

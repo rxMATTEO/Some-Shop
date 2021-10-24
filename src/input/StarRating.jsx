@@ -1,6 +1,8 @@
 import React from 'react';
 import Star from "./Star.jsx";
 import fetchJSON from "../fetchJSON.js";
+import * as ReactDOM from "react-dom";
+import Notification from "./Notification.jsx";
 
 class StarRating extends React.Component {
   constructor(props) {
@@ -21,7 +23,9 @@ class StarRating extends React.Component {
 
   onClick(e, id){
     const newRating = (++id + this.props.product.rating ) / 2;
-    fetchJSON(`/set-product-rating?productId=${this.props.product.id}&rating=${newRating}`);
+    fetchJSON(`/set-product-rating?productId=${this.props.product.id}&rating=${newRating}`, () => {
+      ReactDOM.render(<Notification text="Вы успешно оценили товар! Рейтинг будет изменен после перезагрузки страницы." />, document.getElementById('notifications') );
+    });
   }
 
   render() {

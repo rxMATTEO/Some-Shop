@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 * {
   box-sizing: border-box;
@@ -52,7 +53,7 @@ a {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: black solid 1px;
+  border-bottom: #6E81FA solid 1px;
   align-items: center;
 }
 
@@ -182,9 +183,7 @@ a {
 }
 .nav-menu .category-menu .category-item .brand {
   color: black;
-  float: left;
   display: block;
-  clear: both;
   padding-bottom: 2.5px;
   transition: color 0.2s ease-in-out;
 }
@@ -266,6 +265,9 @@ a {
 .popular-product-container .popular-product .product-bottom .product-price {
   font-size: 22px;
 }
+.popular-product-container .popular-product .product-bottom .product-price:after {
+  content: "р";
+}
 .popular-product-container .popular-product .product-bottom .product-desc {
   padding: 20px 0;
   overflow: hidden;
@@ -337,6 +339,30 @@ a {
   opacity: 0.6;
   color: white;
   border-radius: 0 5px 5px 0;
+}
+
+#notifications {
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+}
+#notifications .notification {
+  background-color: #6E81FA;
+  padding: 10px;
+  color: white;
+  position: relative;
+}
+#notifications .notification .notification__close {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#notifications .notification .notification__text {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=index.css.map */
