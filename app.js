@@ -191,3 +191,15 @@ app.get("/set-product-view", function (req, res){
     );
 }
 });
+
+app.get("/set-product-rating", function (req, res){
+  const productId = req.query["productId"];
+  const rating = req.query["rating"];
+  if(productId && rating){
+    Product.update( {rating: rating}, { where:{ id: productId } } ).then(
+      () => {
+        res.json({isSuccess: true});
+      }
+    );
+  }
+});
