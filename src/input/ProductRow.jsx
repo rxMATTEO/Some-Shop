@@ -8,11 +8,17 @@ import StarRating from "./StarRating.jsx";
 class ProductRow extends React.Component {
   constructor(props) {
     super(props);
+    this.onClick = this.onClick.bind(this);
+    this.state = { className: "product-row" };
+  }
+
+  onClick(e){
+    if(e.target.tagName === 'path') e.preventDefault();
   }
 
   render() {
     return (
-      <a className="product-row" href={"/products/" + this.props.id}>
+      <a className={this.state.className} href={"/products/" + this.props.id} onClick={(e) => this.onClick(e)}>
         <div className="product-row__img">
           <img src={this.props.imgSrc} />
         </div>
@@ -22,7 +28,7 @@ class ProductRow extends React.Component {
           </div>
           <BuyLayout price={this.props.price}/>
           <div className="product__bottom">
-            <StarRating rating={this.props.rating} />
+            <StarRating product={this.props} />
           </div>
         </div>
       </a>

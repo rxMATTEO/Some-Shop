@@ -62,7 +62,7 @@ class Product extends React.Component {
               <span className="top__text">{"12400 dpi, светодиодный, USB, кнопки - 6 подробнее"}</span>
               <BuyLayout price={this.state.product.price} />
               <div className="top__stars">
-                <StarRating rating={this.state.product.rating} />
+                <StarRating product={this.state.product} />
               </div>
             </div>
             <div className="right-logo">
