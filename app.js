@@ -23,6 +23,8 @@ const Brand = require("./model/Brand.js");
 const ProductTypes = require("./model/ProductTypes.js");
 const Categories = require("./model/Categories.js");
 const Subcategories = require("./model/Subcategories.js");
+const User = require("./model/User.js");
+const ViewHistory = require("./model/ViewHistory.js");
 sequelize.sync().then( res =>
 {
   console.log('SQL is connected');
@@ -199,6 +201,51 @@ app.get("/set-product-rating", function (req, res){
     Product.update( {rating: rating}, { where:{ id: productId } } ).then(
       () => {
         res.json({isSuccess: true});
+      }
+    );
+  }
+});
+
+app.get("/create-user", function (req, res){
+  const token = req.query["token"];
+  if(token){
+    User.create({token: token}).then(
+      (user) => {
+        res.json({isSuccess: true, user: user});
+      }
+    );
+  }
+});
+
+app.get("/get-user", function (req, res){
+  const token = req.query["token"];
+  if(token){
+    User.findOne({where: {token: token}}).then(
+      (user) => {
+        res.json({user: user});
+      }
+    );
+  }
+});
+
+app.get("/append-view-to-history", function (req, res){
+  const userId = req.query["userId"];
+  const productId = req.query["productId"];
+  if(userId && productId){
+    ViewHistory.create({userId: userId, productId: productId}).then(
+      () => {
+        res.json({isSuccess: true});
+      }
+    );
+  }
+});
+
+app.get("/get-view-history", function (req, res){
+  const userId = req.query["userId"];
+  if(userId){
+    ViewHistory.findAll({ where: {userId: userId}, limit: 10, order: [ ['createdAt', 'DESC'] ] }).then(
+      (viewHistory) => {
+        res.json(viewHistory);
       }
     );
   }
