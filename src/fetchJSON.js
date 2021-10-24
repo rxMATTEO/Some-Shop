@@ -14,7 +14,7 @@ function fetchJSON(locationPath, callback){
     return res.json();
   }).then( (res) => {
     if(Object.keys(res).length === 0) ReactDOM.render(<NotFound />, document.getElementById('root'));
-    callback(res);
+    if(callback) callback(res);
   });
 }
 
