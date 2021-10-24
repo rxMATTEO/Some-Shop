@@ -13,7 +13,6 @@ function fetchJSON(locationPath, callback){
     }
     return res.json();
   }).then( (res) => {
-    if(Object.keys(res).length === 0) ReactDOM.render(<NotFound />, document.getElementById('root'));
     if(callback) callback(res);
   });
 }

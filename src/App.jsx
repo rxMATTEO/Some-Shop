@@ -5,8 +5,33 @@ import HoverToolTip from "./input/HoverToolTip.jsx";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NotFound from "./pages/not-found/NotFound.jsx";
 import ProductCatalog from "./pages/product-catalog/ProductCatalog.jsx";
+import getRandomToken from "./getRandomToken.js";
+import fetchJSON from "./fetchJSON.js";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    if(!localStorage.getItem("token")){
+      const token = this.getToken();
+      localStorage.setItem("token", token);
+      fetchJSON(`/create-user?token=${token}`);
+    }
+  }
+
+  getToken(){
+    const token = getRandomToken();
+    fetchJSON(`/get-user?token=${token}`, (user) => {
+      while (true) {
+        if (user.user !== null) this.getToken();
+        else break;
+      }
+    });
+    return token;
+  }
+
   render() {
     return (
       <Router>
@@ -20,6 +45,7 @@ class App extends React.Component {
           <Route component={NotFound} />
         </Switch>
         <HoverToolTip />
+        <div id="notifications" />
       </Router>
     );
   }
