@@ -232,11 +232,15 @@ app.get("/append-view-to-history", function (req, res){
   const userId = req.query["userId"];
   const productId = req.query["productId"];
   if(userId && productId){
-    ViewHistory.create({userId: userId, productId: productId}).then(
-      () => {
-        res.json({isSuccess: true});
-      }
-    );
+    ViewHistory.findOne({where: {userId, productId}}).then(history => {
+      if(!history) {
+        ViewHistory.create({userId: userId, productId: productId}).then(
+          () => {
+            res.json({isSuccess: true});
+          }
+        );
+      } else res.json({isSuccess: false});
+    });
   }
 });
 
