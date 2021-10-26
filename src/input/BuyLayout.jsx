@@ -1,5 +1,5 @@
 import React from "react";
-import "../pages/product/product.sass";
+import "../pages/product/product-page.sass";
 
 class BuyLayout extends React.Component {
   constructor(props) {

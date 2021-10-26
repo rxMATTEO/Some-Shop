@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Carousel from "../input/Carousel.jsx";
+import Carousel from "../input/carousel/Carousel.jsx";
 import Product from "../product/Product.jsx";
 import fetchJSON from "../fetchJSON.js";
+import "./product.sass";
 
 class RecentlyViewed extends React.Component {
   constructor(props) {

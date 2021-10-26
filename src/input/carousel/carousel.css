@@ -1,0 +1,11 @@
+.carousel {
+  position: relative;
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/*# sourceMappingURL=carousel.css.map */

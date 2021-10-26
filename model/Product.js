@@ -31,6 +31,10 @@ const Product = sequelize.define("Product", {
   viewsCount: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  miniatures: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 });
 

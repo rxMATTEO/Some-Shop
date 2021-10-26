@@ -1,0 +1,63 @@
+@import "../input/center-align"
+
+.nav-menu
+    position: relative
+    margin-top: 20px
+    color: white
+    font-family: "PT Sans"
+    font-size: .9em
+    .nav-item
+        // todo remove items quantity to jsx array
+        width: calc(100%/6)
+        background-color: #7F6FE3
+        height: 56px
+        display: inline-block
+        transition: background .2s ease-in-out
+        &:hover
+            background-color: #C569F0
+        .nav-label
+            @extend %center-align
+    .category-menu
+        background-color: white
+        position: absolute
+        z-index: 5
+        width: 100%
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+        .subcategories
+            display: inline-block
+            width: 300px
+            float: left
+            .subcategory
+                background-color: #68C9FF
+                display: block
+                padding: 10px
+                color: white
+                &:hover
+                    background-color: #6E81FA
+        .category-item
+            min-width: 200px
+            height: 150px
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+            margin-right: 30px
+            display: inline-block
+            padding: 10px
+            cursor: pointer
+            .item-img
+                float: left
+                height: 100px
+                max-width: 40%
+            .category-products
+                padding-left: 10px
+                width: 60%
+                float: left
+                .category-header
+                    font-size: 25px
+                    color: #68C9FF
+                    padding-bottom: 5px
+            .brand
+                color: black
+                display: block
+                padding-bottom: 2.5px
+                transition: color .2s ease-in-out
+                &:hover
+                    color: #C569F0

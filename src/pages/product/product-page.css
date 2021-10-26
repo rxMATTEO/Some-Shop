@@ -17,6 +17,14 @@
     box-shadow: 0 2px 4px 2px #7F6FE3;
   }
 }
+@keyframes opacityAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .product {
   padding-top: 50px;
 }
@@ -26,9 +34,9 @@
 }
 .product .product__title {
   margin-top: 10px;
-  height: 100%;
   width: 100%;
   padding: 10px 10px 10px 7px;
+  height: 500px;
 }
 .product .product__title .right-logo {
   position: absolute;
@@ -41,6 +49,12 @@
 .product .product__title .title__main-image {
   display: inline-block;
   padding: 0 30px;
+  width: 600px;
+  height: 100%;
+  animation: opacityAnimation 0.2s ease-in-out;
+}
+.product .product__title .title__main-image img {
+  height: 100%;
 }
 .product .product__title .title__top {
   display: inline-block;
@@ -105,4 +119,4 @@
   margin-top: 10px;
 }
 
-/*# sourceMappingURL=product.css.map */
+/*# sourceMappingURL=product-page.css.map */

@@ -1,4 +1,5 @@
 @import "../../input/shadow-layout"
+@import "../../input/animations/opacity-animation"
 .product
     padding-top: 50px
 
@@ -9,9 +10,9 @@
     .product__title
         @extend %shadow__layout
         margin-top: 10px
-        height: 100%
         width: 100%
         padding: 10px 10px 10px 7px
+        height: 500px
 
         .right-logo
             position: absolute
@@ -24,6 +25,11 @@
         .title__main-image
             display: inline-block
             padding: 0 30px
+            width: 600px
+            height: 100%
+            animation: opacityAnimation .2s ease-in-out
+            img
+                height: 100%
 
         .title__top
             display: inline-block

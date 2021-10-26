@@ -1,6 +1,6 @@
 import React from 'react';
-import "../pages/product/product.sass";
-import "../pages/product-catalog/productCatalog.sass";
+import "../pages/product/product-page.sass";
+import "../pages/product-catalog/product-catalog.sass";
 import BuyLayout from "./BuyLayout.jsx";
 import Star from "./Star.jsx";
 import StarRating from "./StarRating.jsx";
@@ -20,7 +20,7 @@ class ProductRow extends React.Component {
     return (
       <a className={this.state.className} href={"/products/" + this.props.id} onClick={(e) => this.onClick(e)}>
         <div className="product-row__img">
-          <img src={this.props.imgSrc} />
+          <img src={this.props.imgSrc.split(';')[0]} />
         </div>
         <div className="product-row__top">
           <div className="product-row__header">

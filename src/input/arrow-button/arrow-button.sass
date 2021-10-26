@@ -1,0 +1,16 @@
+@import "../center-align"
+
+.arrow-button
+    @extend %center-align
+    display: inline-block
+    position: absolute
+    top: 50%
+    z-index: 2
+    cursor: pointer
+    margin-left: 10px
+    fill: #699FF0
+    &.right
+        right: 10px
+        margin-left: 0
+    svg
+        display: block

@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from "../../header/Header.jsx";
 import NavMenu from "../../nav-menu/NavMenu.jsx";
-import "./product.sass";
+import "./product-page.sass";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import * as ReactDOM from "react-dom";
 import NotFound from "../not-found/NotFound.jsx";
-import HoverToolTip from "../../input/HoverToolTip.jsx";
+import HoverToolTip from "../../input/tooltip/HoverToolTip.jsx";
 import Footer from "../../footer/Footer.jsx";
 import fetchJSON from "../../fetchJSON.js";
 import BuyLayout from "../../input/BuyLayout.jsx";
@@ -15,9 +15,10 @@ import StarRating from "../../input/StarRating.jsx";
 class Product extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: {}, brand: {}, user: {}, isToolTipVisible: false };
+    this.state = { product: {}, mainImage: "", brand: {}, user: {}, isToolTipVisible: false };
     fetchJSON(this.props.location.pathname, (result) =>{
       this.setState({ product: result });
+      this.setState({ mainImage: result.imagePath.split(';')[0] });
       fetchJSON(`/set-product-view?productId=${result.id}&views=${++result.viewsCount}`);
       fetchJSON(`/get-user?token=${localStorage.getItem('token')}`, (user) => {
         if(!user || !result) return;
@@ -31,9 +32,21 @@ class Product extends React.Component {
     });
   }
 
+  onMiniatureMouseOver(e, imagePath, index){
+    const bigImage = this.state.product.imagePath.split(';')[index];
+    this.setState({mainImage: bigImage});
+  }
+
   render() {
     if(this.state.product.name) document.title = this.state.product.name;
-
+    let miniatures = this.state.product.miniatures;
+    if(miniatures){
+      miniatures = miniatures.split(';').map( (item, index) => {
+        return (<div className="image-miniatures__image" key={index}>
+          <img src={item} onMouseOver={(e) => this.onMiniatureMouseOver(e, e.target.src, index)} />
+        </div>);
+      } );
+    }
     return (
       <div>
         <Header />
@@ -44,24 +57,12 @@ class Product extends React.Component {
           </div>
           <div className="product__title">
             <div className="title__image-miniatures">
-              <div className="image-miniatures__image">
-                <img src="https://c.dns-shop.ru/thumb/st1/fit/45/45/5baa26a916b271418488a0b81fdced69/4038b4e507b66173dd267448d723310adb5a55bbcdab6113b724102424674ed9.jpg" />
-              </div>
-              <div className="image-miniatures__image">
-                <img src="https://c.dns-shop.ru/thumb/st1/fit/45/45/5baa26a916b271418488a0b81fdced69/4038b4e507b66173dd267448d723310adb5a55bbcdab6113b724102424674ed9.jpg" />
-              </div>
-              <div className="image-miniatures__image">
-                <img src="https://c.dns-shop.ru/thumb/st1/fit/45/45/5baa26a916b271418488a0b81fdced69/4038b4e507b66173dd267448d723310adb5a55bbcdab6113b724102424674ed9.jpg" />
-              </div>
-              <div className="image-miniatures__image">
-                <img src="https://c.dns-shop.ru/thumb/st1/fit/45/45/5baa26a916b271418488a0b81fdced69/4038b4e507b66173dd267448d723310adb5a55bbcdab6113b724102424674ed9.jpg" />
-              </div>
-              <div className="image-miniatures__image">
-                <img src="https://c.dns-shop.ru/thumb/st1/fit/45/45/5baa26a916b271418488a0b81fdced69/4038b4e507b66173dd267448d723310adb5a55bbcdab6113b724102424674ed9.jpg" />
-              </div>
+              {
+                miniatures
+              }
             </div>
             <div className="title__main-image">
-              <img src={this.state.product.imagePath} />
+              <img src={this.state.mainImage} />
             </div>
             <div className="title__top">
               <span className="top__text">{"12400 dpi, светодиодный, USB, кнопки - 6 подробнее"}</span>

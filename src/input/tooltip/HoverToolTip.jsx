@@ -1,9 +1,10 @@
 import React from 'react';
+import "./tooltip.sass";
 
 class HoverToolTip extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { vis: false, text: "",coords: {},rotate: 0 };
+    this.state = { vis: false, text: "", coords: {}, rotate: 0 };
     document.addEventListener('mouseover', (e) => {
       const tooltip = e.target.dataset.tooltip;
       if(tooltip){
@@ -25,11 +26,11 @@ class HoverToolTip extends React.Component {
 
   render() {
     if(this.state.vis) {
-      const coords = this.state.coords;
+      const { coords, rotate } = this.state;
       return (
-        <div className="arrowToolTip" style={{left: coords.left, top: coords.top, opacity: 1, transform: `rotate(${this.state.rotate}deg)`}}>
+        <div className="arrowToolTip" style={{left: coords.left, top: coords.top, opacity: 1, transform: `rotate(${rotate}deg)`}}>
           <div className="triangle"/>
-          <div className="ttBody" style={{transform: `rotate(${this.state.rotate}deg)`}}>{this.state.text}</div>
+          <div className="ttBody" style={{transform: `rotate(${rotate}deg)`, borderRadius: rotate ? "5px 0 0 5px" : "0 5px 5px 0"}}>{this.state.text}</div>
         </div>
       );
     }

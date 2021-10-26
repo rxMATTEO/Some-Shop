@@ -18,7 +18,7 @@
   }
 }
 .product-catalog {
-  margin-top: 50px;
+  padding-top: 50px;
 }
 .product-catalog .product-row {
   width: 100%;
@@ -82,4 +82,4 @@
   margin-top: 15px;
 }
 
-/*# sourceMappingURL=productCatalog.css.map */
+/*# sourceMappingURL=product-catalog.css.map */

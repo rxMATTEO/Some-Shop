@@ -1,0 +1,60 @@
+@import "../input/center-align"
+
+.info
+    display: flex
+    justify-content: space-between
+    padding: 10px 0
+    border-bottom: #6E81FA solid 1px
+    align-items: center
+
+.info-link
+    font-size: 16px
+    color: black
+    margin-right: 20px
+    display: inline-block
+
+.top-nav
+    width: 100%
+    position: fixed
+    top: 0
+
+.bucket
+    background-color: #699FF0
+    padding: 10px 5px
+    color: white
+    .img
+        vertical-align: middle
+        margin-right: 5px
+    .bucket-text
+        display: inline-block
+        vertical-align: middle
+.search
+    height: 50px
+    margin-top: 20px
+    z-index: 20
+    position: fixed
+    transition: top ease-in-out .2s
+    background-color: white
+    width: 100%
+    .searchbar
+        border: 2px solid #6E81FA
+        width: 1000px
+        height: 30px
+        &:focus
+            outline: none
+    .search-button
+        width: 150px
+        background-color: #6E81FA
+        display: inline-block
+        height: 30px
+        .button-label
+            cursor: pointer
+            color: white
+            @extend %center-align
+
+.shop-logo
+    width: 200px
+    display: block
+    position: relative
+    top: -20px
+    -webkit-user-drag: none

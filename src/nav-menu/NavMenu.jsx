@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import NavItem from "./NavItem.jsx";
 import CategoryMenu from "./CategoryMenu.jsx";
 import getCategoryItem from "./getCategoryItem.js";
+import "./nav-menu.sass";
 
 class NavMenu extends React.Component {
   constructor(props) {

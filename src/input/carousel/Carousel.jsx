@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ArrowButton from "./ArrowButton.jsx";
+import ArrowButton from "../arrow-button/ArrowButton.jsx";
+import "./carousel.sass";
 
 class Carousel extends React.Component {
   constructor(props) {

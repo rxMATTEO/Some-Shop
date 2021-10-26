@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./arrow-button.sass";
 
 class ArrowButton extends React.Component {
   render() {

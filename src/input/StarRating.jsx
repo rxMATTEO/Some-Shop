@@ -2,7 +2,7 @@ import React from 'react';
 import Star from "./Star.jsx";
 import fetchJSON from "../fetchJSON.js";
 import * as ReactDOM from "react-dom";
-import Notification from "./Notification.jsx";
+import Notification from "./notification/Notification.jsx";
 
 class StarRating extends React.Component {
   constructor(props) {

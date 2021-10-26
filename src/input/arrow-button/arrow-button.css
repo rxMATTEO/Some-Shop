@@ -1,0 +1,25 @@
+.arrow-button {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.arrow-button {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  cursor: pointer;
+  margin-left: 10px;
+  fill: #699FF0;
+}
+.arrow-button.right {
+  right: 10px;
+  margin-left: 0;
+}
+.arrow-button svg {
+  display: block;
+}
+
+/*# sourceMappingURL=arrow-button.css.map */
