@@ -36,7 +36,7 @@ class StarRating extends React.Component {
     if(rating) {
       let star;
       for (let i = 0; i < 5; i++) {
-        if (i < rating - 1) {
+        if (i < rating) {
           star = <Star fill={ i <= hoveredId ? '#E0CA00' : '#7F6FE3' } onClick={this.onClick} isHovered={ i<= hoveredId } fillWidth="100%" id={i} gradientId={id} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} />;
         } else if(!isHalfStarExist){
           star = <Star fill={ i <= hoveredId ? '#E0CA00' : '#7F6FE3' } onClick={this.onClick} isHovered={ i<= hoveredId } fillWidth={((rating - Math.floor(rating)) * 100) + '%'} id={i} gradientId={id+'1'} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} />;
