@@ -3,8 +3,7 @@ import Header from "../../header/Header.jsx";
 import NavMenu from "../../nav-menu/NavMenu.jsx";
 import Footer from "../../footer/Footer.jsx";
 
-class NotFound extends React.Component{
-  render() {
+function NotFound(props){
     return(
       <div>
         <Header />
@@ -15,7 +14,6 @@ class NotFound extends React.Component{
         <Footer />
       </div>
     );
-  }
 }
 
 export default NotFound;

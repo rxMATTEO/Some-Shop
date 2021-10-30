@@ -8,8 +8,7 @@ import Footer from "../../footer/Footer.jsx";
 import RecentlyViewed from "../../recently-viewed/RecentlyViewed.jsx";
 
 
-class Main extends React.Component {
-  render() {
+function Main() {
     return (
       <div>
         <Header />
@@ -20,7 +19,6 @@ class Main extends React.Component {
         <Footer />
       </div>
     );
-  }
 }
 
 export default Main;

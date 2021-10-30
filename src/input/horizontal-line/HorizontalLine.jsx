@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./horizontal-line.sass";
 
-class HorizontalLine extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="horizontal-line" />
-    );
-  }
+function HorizontalLine(){
+  return (
+    <div className="horizontal-line" />
+  );
 }
 
 export default HorizontalLine;

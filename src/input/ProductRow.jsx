@@ -1,39 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "../pages/product/product-page.sass";
 import "../pages/product-catalog/product-catalog.sass";
 import BuyLayout from "./BuyLayout.jsx";
 import Star from "./Star.jsx";
 import StarRating from "./StarRating.jsx";
 
-class ProductRow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onClick = this.onClick.bind(this);
-    this.state = { className: "product-row" };
-  }
+function ProductRow(props){
+  const [className, setClassName] = useState("product-row");
 
-  onClick(e){
+  function onClick(e){
     if(e.target.tagName === 'path') e.preventDefault();
   }
 
-  render() {
     return (
-      <a className={this.state.className} href={"/products/" + this.props.id} onClick={(e) => this.onClick(e)}>
+      <a className={className} href={"/products/" + props.id} onClick={(e) => onClick(e)} title={props.header}>
         <div className="product-row__img">
-          <img src={this.props.imgSrc.split(';')[0]} />
+          <img src={props.imgSrc.split(';')[0]} alt={props.header}/>
         </div>
         <div className="product-row__top">
           <div className="product-row__header">
-            <p className="header__text">{this.props.header}</p>
+            <p className="header__text">{props.header}</p>
           </div>
-          <BuyLayout price={this.props.price}/>
+          <BuyLayout price={props.price}/>
           <div className="product__bottom">
-            <StarRating product={this.props} />
+            <StarRating product={props} />
           </div>
         </div>
       </a>
     );
-  }
 }
 
 

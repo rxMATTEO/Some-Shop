@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import NavMenu from "../../nav-menu/NavMenu.jsx";
 import Header from "../../header/Header.jsx";
 import Footer from "../../footer/Footer.jsx";
@@ -8,27 +8,21 @@ import fetchJSON from "../../fetchJSON.js";
 import * as ReactDOM from "react-dom";
 import NotFound from "../not-found/NotFound.jsx";
 
-class ProductCatalog extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {products: {}, header: ""};
-    fetchJSON(this.props.location.pathname, (result) => {
-      if(Object.keys(result).length > 0) this.setState({ products: result } );
-      else ReactDOM.render(<NotFound />, document.getElementById('root'));
-    });
-  }
-
-  render() {
-    let { products } = this.state;
-    const productsArray = [];
-    if(Object.keys(products).length > 0){
-      for (let product of products) {
-        productsArray.push(
-          <ProductRow imgSrc={product.imagePath} header={product.name} price={product.price} id={product.id} rating={product.rating}/>
-        );
+function ProductCatalog(props) {
+  const [products, setProducts] = useState([]);
+  const [header, setHeader] = useState("");
+  useEffect(
+    async () => {
+      const json = await fetchJSON(props.location.pathname);
+      if(Object.keys(json).length > 0){
+        setProducts(json.map(( product, index) => <ProductRow imgSrc={product.imagePath} header={product.name} price={product.price} id={product.id} rating={product.rating} key={index} /> ));
       }
-    }
-    document.title = this.props.header || this.state.product?.name || "Some shop";
+      else ReactDOM.render(<NotFound />, document.getElementById('root'));
+      }
+  , []);
+  useEffect(() => {
+    document.title = props.header || "Some shop";
+  });
 
     return (
       <div>
@@ -36,13 +30,12 @@ class ProductCatalog extends React.Component {
         <NavMenu />
         <div className="product-catalog content">
           {
-            productsArray
+            products
           }
         </div>
         <Footer />
       </div>
     );
-  }
 }
 
 export default ProductCatalog;

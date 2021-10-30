@@ -1,27 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./notification.sass";
 
-class Notification extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { isVisible: true };
-  }
+function Notification(props){
+  const [isVisible, setVisibility] = useState(true);
+  let _timerId;
 
-  componentDidMount() {
-    this.timerId = setTimeout( () => { this.setState({ isVisible: false })}, this.props.cooldown );
-  }
-
-  render() {
-    if(this.state.isVisible) {
-      return (
-        <div className="notification">
-          <div className="notification__close" onClick={ (e) => { this.setState({ isVisible: false }); clearTimeout(this.timerId) } }>x</div>
-          <p className="notification__text">{this.props.text}</p>
-        </div>
-      );
+  useEffect( () => {
+    const timerId = setTimeout( () => { setVisibility(false)}, props.cooldown );
+    _timerId = timerId;
+    return () => clearTimeout(timerId);
     }
-    return null;
+  );
+
+  if(isVisible) {
+    return (
+      <div className="notification">
+        <div className="notification__close" onClick={(e) => {
+          setVisibility(false);
+          clearTimeout(_timerId);
+        }}>x</div>
+        <p className="notification__text">{props.text}</p>
+      </div>
+    );
   }
+  return null;
 }
 
 Notification.defaultProps = { cooldown: 5000 };

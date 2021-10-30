@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class BannerItem extends React.Component {
-  render() {
+function BannerItem(props){
     return (
-      <div className="banner-item" style={this.props.style} />
+      <div className="banner-item" style={props.style} />
     );
-  }
 }
 
 export default BannerItem;

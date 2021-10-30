@@ -1,20 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class NavItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: props.text };
-  }
-
-  render() {
-    const { text } = this.state;
+function NavItem(props){
+    const { text } = props;
     return (
-      <div className="nav-item" onMouseOver={(event) => this.props.onMouseOver(event, this.props.subcategories)} onMouseOut={((event) => { this.props.onMouseOut(event) })}>
+      <div className="nav-item" onMouseOver={(event) => props.onMouseOver(event, props.subcategories)} onMouseOut={((event) => { props.onMouseOut(event) })}>
         <p className="nav-label">{text}</p>
       </div>
     );
-  }
 }
 
 export default NavItem;

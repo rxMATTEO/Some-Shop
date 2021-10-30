@@ -1,70 +1,63 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from "./SearchBar.jsx";
 import Button from "../input/Button.jsx";
 import ProductCatalog from "../pages/product-catalog/ProductCatalog.jsx";
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onScroll = this.onScroll.bind(this);
-    this.onSearch = this.onSearch.bind(this);
-    this.onSearchBarFocus = this.onSearchBarFocus.bind(this);
-    this.onSearchBarBlur = this.onSearchBarBlur.bind(this);
-    this.handleEnter = this.handleEnter.bind(this);
-    window.addEventListener('scroll', this.onScroll);
+function Search(props){
+  const [style, setStyle] = useState({ top: "60px",marginTop: "", boxShadow: "none" });
+  const searchQuery = useRef("");
 
-    this.state = { style: { top: "60px",marginTop: "", searchQuery: "" }};
-  }
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+  },[]);
 
-  onScroll(e){
+  function onScroll(e){
     if(window.pageYOffset > 20){
-      this.setState({ style: { top: 0, marginTop: 0, boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" } });
+      setStyle({ top: 0, marginTop: 0, boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" });
     }
-    else this.setState({ style: { top: "60px", marginTop: "", boxShadow: "none" } })
+    else setStyle({ top: "60px", marginTop: "", boxShadow: "none" });
   }
 
-  onSearch(e){
-    this.setState({searchQuery: e.target.value});
+  function onSearch(e){
+    searchQuery.current = e.target.value;
   }
 
-  onSearchButtonClick(searchQuery){
-    ReactDOM.render(<ProductCatalog header={"Поиск по запросу: " + searchQuery} location={ {pathname: "/search?query=" + searchQuery } }/>, document.getElementById('root'))
+  function onSearchButtonClick(){
+    const query = searchQuery.current;
+    ReactDOM.render(<ProductCatalog header={"Поиск по запросу: " + query} location={ { pathname: "/search?query=" + query } } />, document.getElementById('root'))
   }
 
-  onSearchBarFocus(){
-    document.addEventListener('keydown', this.handleEnter);
+  function onSearchBarFocus(){
+    document.addEventListener('keydown', (e) => handleEnter(e));
   }
 
-  onSearchBarBlur(){
-    document.removeEventListener('keydown', this.handleEnter);
+  function onSearchBarBlur(){
+    document.removeEventListener('keydown', (e) => handleEnter(e));
   }
 
-  handleEnter(e){
+  function handleEnter(e){
     if (e.key === 'Enter') {
-      this.onSearchButtonClick(this.state.searchQuery);
+      onSearchButtonClick();
     }
   }
 
-  render() {
-    const { searchQuery } = this.state;
-    return (
+  return (
       //todo remove inline styles
       <div style={{display: "inline-block", height: "50px", width: "100%"}}>
-        <div className="search" style={{ top: this.state.style.top, marginTop: this.state.style.marginTop, boxShadow: this.state.style.boxShadow }}>
+        <div className="search" style={{ top: style.top, marginTop: style.marginTop, boxShadow: style.boxShadow }}>
           <div className="content" style={{display: "flex", justifyContent: "space-between", top: "10px", position: "relative", height: "10px"}}>
             <div style={{display: "inline-block", height: "100%"}}>
               <a href="/" style={{display: "inline-block", height: "inherit"}}>
                 <img src="/./image.png" className="shop-logo"/>
               </a>
             </div>
-            <SearchBar onFocus={ this.onSearchBarFocus } onBlur={ this.onSearchBarBlur } onSearch={ this.onSearch }/>
-            <Button className="search-button" text="Найти" onClick={ () => this.onSearchButtonClick(searchQuery) } />
+            <SearchBar onFocus={ onSearchBarFocus } onBlur={ onSearchBarBlur } onSearch={ onSearch }/>
+            <Button className="search-button" text="Найти" onClick={ () => onSearchButtonClick() } />
           </div>
         </div>
       </div>
     );
-  }
 }
 
 export default Search;
