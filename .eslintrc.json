@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:react-hooks/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -24,6 +25,8 @@
         "import/extensions" : "off",
         "no-useless-concat": "off",
         "react/prop-types": "off",
-        "react/destructuring-assignment": "off"
+        "react/destructuring-assignment": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
     }
 }
