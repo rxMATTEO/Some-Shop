@@ -4,7 +4,7 @@
   display: inline-block;
   position: relative;
 }
-.product__middle:hover, .top__layout:hover, .product .product__title:hover {
+.product__middle:hover:not(.not-hoverable), .top__layout:hover:not(.not-hoverable), .product .product__title:hover:not(.not-hoverable) {
   box-shadow: 0 2px 4px 2px #7F6FE3;
   animation: animation ease-in-out 0.2s;
 }

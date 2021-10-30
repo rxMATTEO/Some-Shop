@@ -5,7 +5,7 @@
   display: inline-block;
   position: relative;
 }
-.popular-product-container .popular-product:hover {
+.popular-product-container .popular-product:hover:not(.not-hoverable) {
   box-shadow: 0 2px 4px 2px #7F6FE3;
   animation: animation ease-in-out 0.2s;
 }

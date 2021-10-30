@@ -4,7 +4,7 @@
   display: inline-block;
   position: relative;
 }
-.product-catalog .product-row__middle-layout:hover, .product-catalog .product-row:hover {
+.product-catalog .product-row__middle-layout:hover:not(.not-hoverable), .product-catalog .product-row:hover:not(.not-hoverable) {
   box-shadow: 0 2px 4px 2px #7F6FE3;
   animation: animation ease-in-out 0.2s;
 }
