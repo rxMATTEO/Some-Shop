@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Star from "./Star.jsx";
-import fetchJSON from "../fetchJSON.js";
+import fetchJSON from "../../fetchJSON.js";
 import * as ReactDOM from "react-dom";
 import Notification from "./notification/Notification.jsx";
 

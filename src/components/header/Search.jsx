@@ -2,7 +2,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from "./SearchBar.jsx";
 import Button from "../input/Button.jsx";
-import ProductCatalog from "../pages/product-catalog/ProductCatalog.jsx";
+import ProductCatalog from "../../pages/product-catalog/ProductCatalog.jsx";
+import {useHistory} from "react-router";
 
 function Search(props){
   const [style, setStyle] = useState({ top: "60px",marginTop: "", boxShadow: "none" });
@@ -25,7 +26,8 @@ function Search(props){
 
   function onSearchButtonClick(){
     const query = searchQuery.current;
-    ReactDOM.render(<ProductCatalog header={"Поиск по запросу: " + query} location={ { pathname: "/search?query=" + query } } />, document.getElementById('root'))
+    if(!query) return;
+    document.location.href = '/search/' + query;
   }
 
   function onSearchBarFocus(){

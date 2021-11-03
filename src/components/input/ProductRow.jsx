@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import "../pages/product/product-page.sass";
-import "../pages/product-catalog/product-catalog.sass";
+import "../../pages/product/product-page.sass";
+import "../../pages/product-catalog/product-catalog.sass";
 import BuyLayout from "./BuyLayout.jsx";
 import Star from "./Star.jsx";
 import StarRating from "./StarRating.jsx";
@@ -21,7 +21,7 @@ function ProductRow(props){
           <div className="product-row__header">
             <p className="header__text">{props.header}</p>
           </div>
-          <BuyLayout price={props.price}/>
+          <BuyLayout product={props}/>
           <div className="product__bottom">
             <StarRating product={props} />
           </div>

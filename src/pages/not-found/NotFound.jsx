@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../../header/Header.jsx";
-import NavMenu from "../../nav-menu/NavMenu.jsx";
-import Footer from "../../footer/Footer.jsx";
+import Header from "../../components/header/Header.jsx";
+import NavMenu from "../../components/nav-menu/NavMenu.jsx";
+import Footer from "../../components/footer/Footer.jsx";
 
 function NotFound(props){
     return(

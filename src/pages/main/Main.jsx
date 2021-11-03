@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from "../../header/Header.jsx";
-import NavMenu from "../../nav-menu/NavMenu.jsx";
-import Banner from "../../banner/Banner.jsx";
-import PopularProductContainer from "../../popular-product/PopularProductContainer.jsx";
-import Footer from "../../footer/Footer.jsx";
-import RecentlyViewed from "../../recently-viewed/RecentlyViewed.jsx";
+import Header from "../../components/header/Header.jsx";
+import NavMenu from "../../components/nav-menu/NavMenu.jsx";
+import Banner from "../../components/banner/Banner.jsx";
+import PopularProductContainer from "../../components/popular-product/PopularProductContainer.jsx";
+import Footer from "../../components/footer/Footer.jsx";
+import RecentlyViewed from "../../components/recently-viewed/RecentlyViewed.jsx";
 
 
 function Main() {

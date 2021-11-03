@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import Header from "../../header/Header.jsx";
-import NavMenu from "../../nav-menu/NavMenu.jsx";
+import Header from "../../components/header/Header.jsx";
+import NavMenu from "../../components/nav-menu/NavMenu.jsx";
 import "./product-page.sass";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import * as ReactDOM from "react-dom";
 import NotFound from "../not-found/NotFound.jsx";
-import HoverToolTip from "../../input/tooltip/HoverToolTip.jsx";
-import Footer from "../../footer/Footer.jsx";
+import HoverToolTip from "../../components/input/tooltip/HoverToolTip.jsx";
+import Footer from "../../components/footer/Footer.jsx";
 import fetchJSON from "../../fetchJSON.js";
-import BuyLayout from "../../input/BuyLayout.jsx";
-import Star from "../../input/Star.jsx";
-import StarRating from "../../input/StarRating.jsx";
+import BuyLayout from "../../components/input/BuyLayout.jsx";
+import Star from "../../components/input/Star.jsx";
+import StarRating from "../../components/input/StarRating.jsx";
+import userClient from "../../user/userClient.js";
 
 function Product(props){
   const [product, setProduct] = useState({});
@@ -19,7 +20,7 @@ function Product(props){
   const [user, setUser] = useState({});
 
   useEffect( () => {
-    fetchJSON(props.location.pathname, (result) =>{
+    fetchJSON(props.location.pathname, async (result) =>{
       setProduct(result);
       setMainImage(result.imagePath.split(';')[0]);
       fetchJSON(`/set-product-view?productId=${result.id}&views=${++result.viewsCount}`);
@@ -71,7 +72,7 @@ function Product(props){
             </div>
             <div className="title__top">
               <span className="top__text">{"12400 dpi, светодиодный, USB, кнопки - 6 подробнее"}</span>
-              <BuyLayout price={product.price} />
+              <BuyLayout product={product} />
               <div className="top__stars">
                 <StarRating product={product} />
               </div>
