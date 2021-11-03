@@ -6,7 +6,7 @@ import "./product-catalog.sass";
 import ProductRow from "../../components/input/ProductRow.jsx";
 import fetchJSON from "../../fetchJSON.js";
 import * as ReactDOM from "react-dom";
-import NotFound from "../not-found/NotFound.jsx";
+import NotFoundPage from "../not-found/NotFoundPage.jsx";
 import {useHistory} from "react-router";
 
 function ProductCatalog(props) {

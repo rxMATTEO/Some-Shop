@@ -1,7 +1,7 @@
 import configuration from "./configuration.js";
 import * as ReactDOM from "react-dom";
 import React from 'react';
-import NotFound from "./pages/not-found/NotFound.jsx";
+import NotFoundPage from "./pages/not-found/NotFoundPage.jsx";
 
 function fetchJSON(locationPath, callback){
   return fetch(configuration.serverUrl + locationPath, {

@@ -3,7 +3,7 @@ import Header from "../../components/header/Header.jsx";
 import NavMenu from "../../components/nav-menu/NavMenu.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 
-function NotFound(props){
+function NotFoundPage(props){
     return(
       <div>
         <Header />
@@ -16,4 +16,4 @@ function NotFound(props){
     );
 }
 
-export default NotFound;
+export default NotFoundPage;

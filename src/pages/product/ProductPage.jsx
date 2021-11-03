@@ -4,7 +4,7 @@ import NavMenu from "../../components/nav-menu/NavMenu.jsx";
 import "./product-page.sass";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import * as ReactDOM from "react-dom";
-import NotFound from "../not-found/NotFound.jsx";
+import NotFoundPage from "../not-found/NotFoundPage.jsx";
 import HoverToolTip from "../../components/input/tooltip/HoverToolTip.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import fetchJSON from "../../fetchJSON.js";
@@ -13,7 +13,7 @@ import Star from "../../components/input/Star.jsx";
 import StarRating from "../../components/input/StarRating.jsx";
 import userClient from "../../user/userClient.js";
 
-function Product(props){
+function ProductPage(props){
   const [product, setProduct] = useState({});
   const [mainImage, setMainImage] = useState("");
   const [brand, setBrand] = useState({});
@@ -95,4 +95,4 @@ function Product(props){
     );
 }
 
-export default Product;
+export default ProductPage;

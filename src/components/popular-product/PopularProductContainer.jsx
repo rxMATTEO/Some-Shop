@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Product from "../product/Product.jsx";
 import fetchJSON from "../../fetchJSON.js";
 import configuration from "../../configuration.js";
-import NotFound from "../../pages/not-found/NotFound.jsx";
+import NotFoundPage from "../../pages/not-found/NotFoundPage.jsx";
 
 function PopularProductContainer() {
   const [products, setProducts] = useState([]);

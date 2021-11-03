@@ -11,7 +11,7 @@ function BucketPage(props){
     <div>
       <Header />
       <NavMenu />
-      <div>
+      <div style={{padding: "20px 5px"}}>
         {
           props.products.map((item) => {
             return <ProductRow imgSrc={item.imagePath} id={item.id} header={item.name} price={item.price} rating={item.rating} />

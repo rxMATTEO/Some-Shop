@@ -8,7 +8,7 @@ import Footer from "../../components/footer/Footer.jsx";
 import RecentlyViewed from "../../components/recently-viewed/RecentlyViewed.jsx";
 
 
-function Main() {
+function MainPage() {
     return (
       <div>
         <Header />
@@ -21,4 +21,4 @@ function Main() {
     );
 }
 
-export default Main;
+export default MainPage;

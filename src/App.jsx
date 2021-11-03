@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import Main from "./pages/main/Main.jsx";
-import Product from "./pages/product/Product.jsx";
+import MainPage from "./pages/main/MainPage.jsx";
+import ProductPage from "./pages/product/ProductPage.jsx";
 import HoverToolTip from "./components/input/tooltip/HoverToolTip.jsx";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import NotFound from "./pages/not-found/NotFound.jsx";
+import NotFoundPage from "./pages/not-found/NotFoundPage.jsx";
 import ProductCatalog from "./pages/product-catalog/ProductCatalog.jsx";
 import getRandomToken from "./getRandomToken.js";
 import fetchJSON from "./fetchJSON.js";
@@ -34,15 +34,15 @@ function App(props){
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Main} />
+        <Route exact path="/" component={MainPage} />
         <Route path="/search/:query" component={(props) => (<ProductCatalog location={{pathname: "/search?query=" + props.match.params.query}} />)} />
-        <Route path="/products/:id" exact component={Product} />
+        <Route path="/products/:id" exact component={ProductPage} />
         <Route path="/category/:categoryName" component={ProductCatalog} />
         <Route path="/:subcategory/:brand" component={ProductCatalog} />
         <Route path="/subcategory/:subcategoryName" component={ProductCatalog} />
         <Route path="/products/:productId/brand/:brandId" component={ProductCatalog} />
         <Route path="/bucket" component={BucketPage} />
-        <Route component={NotFound} />
+        <Route component={NotFoundPage} />
       </Switch>
       <HoverToolTip />
       <div id="notifications" />
