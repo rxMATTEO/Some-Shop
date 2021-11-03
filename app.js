@@ -16,8 +16,8 @@ app.listen(port, () => console.log('Server is started'));
 module.exports = {
   sequelize: sequelize
 };
-const apply = require("./model/index.js");
-apply();
+const model = require("./model/model.js");
+model.applyRelationships();
 const Product = require("./model/Product.js");
 const Brand = require("./model/Brand.js");
 const ProductTypes = require("./model/ProductTypes.js");
@@ -25,6 +25,7 @@ const Categories = require("./model/Categories.js");
 const Subcategories = require("./model/Subcategories.js");
 const User = require("./model/User.js");
 const ViewHistory = require("./model/ViewHistory.js");
+const Bucket = require("./model/Bucket.js");
 sequelize.sync().then( res =>
 {
   console.log('SQL is connected');
@@ -124,7 +125,6 @@ app.get("/:subcategory/:brand", function (req, res, next){
   Subcategories.findOne({where: {name: subcategory}, raw: true}).then(
     sub => {
       if(!sub){
-        res.writeHead(404);
         next();
       } else
       Brand.findOne({where: {name: brand}, raw : true}).then(
@@ -191,7 +191,10 @@ app.get("/set-product-view", function (req, res){
         res.json({isSuccess: true});
       }
     );
-}
+} else{
+    res.writeHead(404);
+    res.end();
+  }
 });
 
 app.get("/set-product-rating", function (req, res){
@@ -203,6 +206,9 @@ app.get("/set-product-rating", function (req, res){
         res.json({isSuccess: true});
       }
     );
+  } else{
+    res.writeHead(404);
+    res.end();
   }
 });
 
@@ -215,6 +221,10 @@ app.get("/create-user", function (req, res){
       }
     );
   }
+  else{
+    res.writeHead(404);
+    res.end();
+  }
 });
 
 app.get("/get-user", function (req, res){
@@ -225,6 +235,10 @@ app.get("/get-user", function (req, res){
         res.json({user: user});
       }
     );
+  }
+  else{
+    res.writeHead(404);
+    res.end();
   }
 });
 
@@ -242,6 +256,10 @@ app.get("/append-view-to-history", function (req, res){
       } else res.json({isSuccess: false});
     });
   }
+  else{
+    res.writeHead(404);
+    res.end();
+  }
 });
 
 app.get("/get-view-history", function (req, res){
@@ -252,5 +270,44 @@ app.get("/get-view-history", function (req, res){
         res.json(viewHistory);
       }
     );
+  }
+});
+
+app.get("/bucket/get", function(req,res){
+  const userId = req.query["userId"];
+  if(userId){
+    Bucket.findAll({where: {userId}}).then(bucket => {
+      return new Promise(resolve => {
+        const productArray = [];
+        for (let i = 0; i < bucket.length; i++) {
+          bucket[i].getProduct().then(product => {
+            productArray.push(product);
+            if(i === bucket.length - 1) resolve(productArray);
+          });
+        }
+      })
+    }).then(products => res.json(products));
+  }
+  else {
+    res.writeHead(404);
+    res.end();
+  }
+});
+
+app.get("/bucket/set", function(req,res){
+  const userId = req.query["userId"];
+  const productId = req.query["productId"];
+  if(userId && productId){
+    Bucket.findOne({where: {userId, productId}}).then(bucket => {
+      if(!bucket){
+        Bucket.create({ProductId: productId, UserId: userId}).then(bucket => {
+          res.json(bucket);
+        });
+      }
+    });
+  }
+  else {
+    res.writeHead(404);
+    res.end();
   }
 });
