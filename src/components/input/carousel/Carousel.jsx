@@ -60,9 +60,7 @@ function Carousel(props){
 
   function onMouseUp(e){
     setRight( prev => {
-      e.target.onclick = (e) => {
-        if (e.pageX !== oldPosition) e.preventDefault();
-      };
+      e.target.addEventListener('click', (e) => {if (e.pageX !== oldPosition) e.preventDefault()}, { once: true });
       window.removeEventListener('mousemove', onMouseMove);
 
       const correctRightIndex = possibleRight.findIndex( item => prev < item );
