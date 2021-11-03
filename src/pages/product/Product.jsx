@@ -24,11 +24,11 @@ function Product(props){
       setProduct(result);
       setMainImage(result.imagePath.split(';')[0]);
       fetchJSON(`/set-product-view?productId=${result.id}&views=${++result.viewsCount}`);
-      fetchJSON(`/get-user?token=${localStorage.getItem('token')}`, (user) => {
-        if(!user || !result) return;
-        setUser(user.user);
+      const user = await userClient.getCurrentUser();
+      if(user) {
+        setUser(user);
         fetchJSON(`/append-view-to-history?userId=${user.user.id}&productId=${result.id}`);
-      });
+      }
     });
     fetchJSON(`/brands?id=${props.match.params.id}`, (result) =>
     {

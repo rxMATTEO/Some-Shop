@@ -8,7 +8,6 @@ function fetchJSON(locationPath, callback){
     method: "GET"
   }).then( res => {
     if(res.status === 404){
-      ReactDOM.render(<NotFound />, document.getElementById('root'));
       return;
     }
     return res.json();

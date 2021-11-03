@@ -9,13 +9,16 @@
     "dev": "concurrently \"webpack serve --mode development\" \"npm run server\""
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.2",
     "express": "^4.17.1",
     "node": "^16.9.1",
     "nodemon": "^2.0.13",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
+    "redux": "^4.1.2",
     "sequelize": "^6.7.0",
     "tedious": "^13.1.0"
   },
@@ -34,6 +37,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "postcss-loader": "^6.2.0",
     "sass": "^1.42.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.3.0",

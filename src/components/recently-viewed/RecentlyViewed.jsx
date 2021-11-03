@@ -11,8 +11,8 @@ function RecentlyViewed() {
 
   useEffect( () => {
     async function fetchProducts(){
-      const user = await fetchJSON(`/get-user?token=${localStorage.getItem('token')}`);
-      if(!user.user) return;
+      const user = await userClient.getCurrentUser();
+      if(!user) return;
       const viewHistory = await fetchJSON(`/get-view-history?userId=${user.user.id}`);
       const productArray = [];
       for (let i = 0; i < viewHistory.length; i++) {
