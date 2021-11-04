@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {addProduct, removeProduct} from "../../redux/actions/actions.js";
+import {connect} from "react-redux";
 
 function Button(props) {
     const { className, text } = props;
@@ -9,5 +11,8 @@ function Button(props) {
       </div>
     );
 }
-
-export default Button;
+const mapDispatchToProps = { addProduct, removeProduct };
+const mapStateToProps = (state) => {
+  return { products: state.products };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Button);

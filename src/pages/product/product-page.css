@@ -81,15 +81,17 @@
   padding: 10px;
   width: 370px;
 }
-.top__layout .layout__text {
+
+.layout__text {
   color: #6E81FA;
   font-size: 26px;
   display: inline-block;
 }
-.top__layout .layout__text:after {
+.layout__text:after {
   content: "p";
 }
-.top__layout .layout__button {
+
+.layout__button {
   background-color: #6E81FA;
   cursor: pointer;
   display: inline-block;
@@ -98,7 +100,7 @@
   position: absolute;
   right: 10px;
 }
-.top__layout .layout__button .button__text {
+.layout__button .button__text {
   text-align: center;
   color: white;
   background-color: #6E81FA;

@@ -19,7 +19,7 @@ function PopularProductContainer() {
     <div>
       <p className="container-label content">Популярные товары</p>
       <div className="content popular-product-container">
-        {products.map( (product, index) => <Product imgSrc={product.imagePath} price={product.price} desc={product.name} key={index} id={product.id} /> )}
+        {products.map( (product, index) => <Product product={product} key={index} /> )}
       </div>
     </div>
   );

@@ -5,21 +5,15 @@ import {addProduct, removeProduct} from "../../redux/actions/actions.js";
 import {bucketReducer} from "../../redux/reducers/bucketReducer.js";
 import fetchJSON from "../../fetchJSON.js";
 import userClient from "../../user/userClient.js";
+import {addProductToBucket} from "../../pages/bucket/BucketPage.jsx";
 
 function BuyLayout(props){
-  function onBuyButtonClick(){
-    props.addProduct(props.product);
-    (async() => {
-      const user = await userClient.getCurrentUser();
-      if(user) fetchJSON(`/bucket/set?userId=${user.user.id}&productId=${props.product.id}`);
-    })();
-  }
   return (
     <div className="top__layout not-hoverable">
       <div className="layout__text">
         <span>{props.product.price}</span>
       </div>
-      <div className="layout__button" onClick={onBuyButtonClick}>
+      <div className="layout__button" onClick={(e) => addProductToBucket(e, props.product, props)}>
         <span className="button__text">Купить</span>
       </div>
     </div>

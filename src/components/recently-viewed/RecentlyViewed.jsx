@@ -28,7 +28,7 @@ function RecentlyViewed() {
       <div className="content">
         <p className="container-label">Вы недавно смотрели</p>
         <div className="popular-product-container">
-          <Carousel style={{padding: "0 0 5px 5px"}} offset="270" items={products.map( (product, index) => <Product imgSrc={product.imagePath} price={product.price} desc={product.name} key={index} id={product.id} /> )} />
+          <Carousel style={{padding: "0 0 5px 5px"}} offset="270" items={products.map( (product, index) => <Product product={product} key={index} /> )} />
         </div>
       </div>
     );

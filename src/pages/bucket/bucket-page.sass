@@ -1,0 +1,43 @@
+@import "../../components/input/shadow-layout"
+
+.product-catalog__header
+    padding: 0 0 10px 0
+    font-size: 25px
+    font-weight: bold
+
+.bucket-item
+    display: inline-block
+    .bucket-price
+        padding-top: 10px
+        text-align: right
+        width: 100%
+
+.product-catalog__right
+    display: inline-block
+    width: 60%
+    vertical-align: top
+    .right__summary
+        @extend %shadow__layout
+        width: 100%
+        padding: 20px 10px
+        .summary__button
+            background-color: #10ad44
+            color: white
+            padding: 20px 10px
+            text-align: center
+            font-size: 18px
+            border-radius: 5px
+            margin-bottom: 20px
+            cursor: pointer
+
+    .summary__bottom
+        font-size: 20px
+        font-weight: bold
+        .bottom__right
+            text-align: right
+            position: absolute
+            right: 10px
+
+.price
+    &:after
+        content: " p"
