@@ -31,7 +31,7 @@ function BucketPage(props){
               props.products.map((product) => {
                 summ += product.price;
                 quantity++;
-                return <BucketItem imgSrc={product.imagePath} id={product.id} header={product.name} price={product.price} rating={product.rating} />
+                return <BucketItem imgSrc={product.imagePath} id={product.id} header={product.name} price={product.price} rating={product.rating} key={product.id} />
               })
             }
           </div>
@@ -63,15 +63,5 @@ const mapDispatchToProps = { addProduct, removeProduct };
 const mapStateToProps = (state) => {
   return { products: state.products };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(BucketPage);
-export function addProductToBucket(e, product, props){
-  e.preventDefault();
-  props.addProduct(product);
-  ReactDOM.render(<Notification text="Вы успешно добавили товар в корзину!" />, document.getElementById('notifications') );
-  (async() => {
-    const user = await userClient.getCurrentUser();
-    if(user) fetchJSON(`/bucket/set?userId=${user.user.id}&productId=${product.id}`);
-  })();
-}
 
