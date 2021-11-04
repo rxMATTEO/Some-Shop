@@ -1,7 +1,7 @@
 import ProductRow from "../../components/input/ProductRow.jsx";
 import Header from "../../components/header/Header.jsx";
 import NavMenu from "../../components/nav-menu/NavMenu.jsx";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {addProduct, removeProduct} from "../../redux/actions/actions.js";
 import fetchJSON from "../../fetchJSON.js";
@@ -31,7 +31,7 @@ function BucketPage(props){
               props.products.map((product) => {
                 summ += product.price;
                 quantity++;
-                return <BucketItem imgSrc={product.imagePath} id={product.id} header={product.name} price={product.price} rating={product.rating} key={product.id} />
+                return <BucketItem product={product} key={product.id} />
               })
             }
           </div>

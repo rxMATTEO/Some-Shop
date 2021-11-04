@@ -1,6 +1,6 @@
 import {addProduct, removeProduct} from "../actions/actions.js";
 import fetchJSON from "../../fetchJSON.js";
-import {ADD_PRODUCT, SET_STATE} from "../actions/actionTypes.js";
+import {ADD_PRODUCT, REMOVE_PRODUCT, SET_STATE} from "../actions/actionTypes.js";
 
 const initialState = {
   products: []
@@ -14,6 +14,9 @@ export function bucketReducer(state = initialState, action){
 
     case SET_STATE:
       return { products : [...action.product] };
+
+    case REMOVE_PRODUCT:
+      return { products: [...state.products].filter(product => product.id !== action.product.id) };
 
     default: return state;
   }

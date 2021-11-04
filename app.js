@@ -311,3 +311,18 @@ app.get("/bucket/set", function(req,res){
     res.end();
   }
 });
+
+app.get("/bucket/remove", function(req,res){
+  const userId = req.query["userId"];
+  const productId = req.query["productId"];
+  if(userId && productId){
+    Bucket.destroy({where: {userId, productId}}).then(bucket => {
+      if(bucket) res.json(bucket);
+      else res.json({isSuccess: false});
+    });
+  }
+  else {
+    res.writeHead(404);
+    res.end();
+  }
+});
