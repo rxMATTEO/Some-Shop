@@ -5,7 +5,6 @@ import {addProduct, removeProduct} from "../../redux/actions/actions.js";
 import {bucketReducer} from "../../redux/reducers/bucketReducer.js";
 import fetchJSON from "../../fetchJSON.js";
 import userClient from "../../user/userClient.js";
-import {addProductToBucket} from "../../pages/bucket/BucketPage.jsx";
 import useBucket from "../../hooks/useBucket.js";
 import {ADD_PRODUCT} from "../../redux/actions/actionTypes.js";
 
@@ -25,7 +24,7 @@ function BuyLayout(props){
 
 const mapDispatchToProps = { addProduct, removeProduct };
 const mapStateToProps = (state) => {
-  return { products: state.products };
+  return { products: state.bucket.products };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BuyLayout);

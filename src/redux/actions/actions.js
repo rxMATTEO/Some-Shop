@@ -1,6 +1,6 @@
 import fetchJSON from "../../fetchJSON.js";
 import userClient from "../../user/userClient.js";
-import {ADD_PRODUCT, REMOVE_PRODUCT, SET_STATE} from "./actionTypes.js";
+import {ADD_NOTIFICATION, ADD_PRODUCT, REMOVE_PRODUCT, SET_STATE} from "./actionTypes.js";
 
 const addProduct = (product) => ({
   type: ADD_PRODUCT,
@@ -17,4 +17,9 @@ const setState = (product) => ({
   product: Array.from(product)
 });
 
-export {addProduct, removeProduct, setState};
+const addNotification = (notificationText) => ({
+  type: ADD_NOTIFICATION,
+  notificationText
+});
+
+export {addProduct, removeProduct, setState, addNotification};

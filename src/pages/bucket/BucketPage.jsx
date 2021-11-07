@@ -60,7 +60,7 @@ function BucketPage(props){
 }
 const mapDispatchToProps = { addProduct, removeProduct };
 const mapStateToProps = (state) => {
-  return { products: state.products };
+  return { products: state.bucket.products };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(BucketPage);
 

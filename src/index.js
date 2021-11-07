@@ -18,7 +18,7 @@ import {SET_STATE} from "./redux/actions/actionTypes.js";
     store.dispatch({type: SET_STATE, product: products});
   }
 })();
-const store = redux.createStore(bucketReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = redux.createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

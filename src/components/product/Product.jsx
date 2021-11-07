@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from "../input/Button.jsx";
-import {addProductToBucket} from "../../pages/bucket/BucketPage.jsx";
 import {addProduct, removeProduct} from "../../redux/actions/actions.js";
 import {connect} from "react-redux";
 import useBucket from "../../hooks/useBucket.js";
@@ -11,9 +10,9 @@ function Product(props){
   const addProduct = useBucket(ADD_PRODUCT, props.product);
   return (
     <div style={{ paddingRight: "20px", paddingTop: "20px", display: "inline-block"}}>
-      <a className="popular-product" href={"products/" + props.product.id} onDragStart={ (e) => e.preventDefault() } title={props.product.desc}>
+      <a className="popular-product" href={"products/" + props.product.id} onDragStart={ (e) => e.preventDefault() } title={props.product.name}>
         <div className="product-img">
-          <img src={props.product.imagePath.split(';')[0]} alt={props.product.desc} onDragStart={ (e) => e.preventDefault() } />
+          <img src={props.product.imagePath.split(';')[0]} alt={props.product.name} onDragStart={ (e) => e.preventDefault() } />
         </div>
         <div className="product-bottom">
           <div className="product-price">
@@ -31,7 +30,7 @@ function Product(props){
 
 const mapDispatchToProps = { addProduct, removeProduct };
 const mapStateToProps = (state) => {
-  return { products: state.products };
+  return { products: state.bucket.products };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
