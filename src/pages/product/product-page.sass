@@ -3,10 +3,6 @@
 .product
     padding-top: 50px
 
-    .product-header
-        font-size: 25px
-        font-weight: bold
-
     .product__title
         @extend %shadow__layout
         margin-top: 10px
@@ -67,7 +63,11 @@
     padding: 5px 30px
     position: absolute
     right: 10px
+    transition: background-color ease-in-out .2s
+    &:hover .button__text, &:hover
+        background-color: #7F6FE3
     .button__text
+        transition: background-color ease-in-out .2s
         text-align: center
         color: white
         background-color: #6E81FA
@@ -84,3 +84,7 @@
 
 .top__stars
     margin-top: 10px
+
+.product-header
+    font-size: 25px
+    font-weight: bold

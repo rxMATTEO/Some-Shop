@@ -70,9 +70,13 @@
 }
 .popular-product-container .popular-product .product-bottom .product-button {
   background-color: #68C9FF;
+  transition: background-color ease-in-out 0.2s;
   border-radius: 5px;
   display: inline-block;
-  padding: 5px;
+  padding: 8px;
+}
+.popular-product-container .popular-product .product-bottom .product-button:hover {
+  background-color: #0099ff;
 }
 
 /*# sourceMappingURL=product.css.map */

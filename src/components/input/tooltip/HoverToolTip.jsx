@@ -12,6 +12,8 @@ function HoverToolTip(props){
     document.addEventListener('mouseover', (e) => {
       const tooltip = e.target.dataset.tooltip;
       if(tooltip){
+        e.target.title = "";
+
         const rect = e.target.getBoundingClientRect();
         setVisibility(true);
         setText(tooltip);
@@ -19,10 +21,10 @@ function HoverToolTip(props){
         if(document.body.offsetWidth - rect.left < 250){
           coords.left = e.clientX - 280;
           coords.top -= e.target.offsetHeight / 2;
-          coords.top += pageYOffset;
           setRotate(180);
         }
         else coords.left = e.clientX + e.target.offsetWidth;
+        coords.top += pageYOffset;
         setCoords(coords);
       }
       else setVisibility(false);

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Carousel from "../input/carousel/Carousel.jsx";
 import Product from "../product/Product.jsx";
 import fetchJSON from "../../fetchJSON.js";
-import "./product.sass";
+import "../product/product.sass";
 import userClient from "../../user/userClient.js";
 
 function RecentlyViewed() {

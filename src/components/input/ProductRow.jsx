@@ -13,17 +13,17 @@ function ProductRow(props){
   }
 
     return (
-      <a className={className} href={"/products/" + props.id} onClick={(e) => onClick(e)} title={props.header}>
+      <a className={className} href={"/products/" + props.product.id} onClick={(e) => onClick(e)} title={props.product.name}>
         <div className="product-row__img">
-          <img src={props.imgSrc.split(';')[0]} alt={props.header}/>
+          <img src={props.product.imagePath.split(';')[0]} alt={props.product.name}/>
         </div>
         <div className="product-row__top">
           <div className="product-row__header">
-            <p className="header__text">{props.header}</p>
+            <p className="header__text">{props.product.name}</p>
           </div>
-          <BuyLayout product={props}/>
+          <BuyLayout product={props.product}/>
           <div className="product__bottom">
-            <StarRating product={props} />
+            <StarRating product={props.product} />
           </div>
         </div>
       </a>

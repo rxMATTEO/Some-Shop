@@ -16,7 +16,6 @@ import Notification from "../../components/input/notification/Notification.jsx";
 function BucketPage(props){
   let summ = 0;
   let quantity = 0;
-
   return (
     <div>
       <Header />
@@ -28,11 +27,11 @@ function BucketPage(props){
         <div style={{width: "40%", display: "inline-block"}}>
           <div>
             {
-              props.products.map((product) => {
+              props.products?.length && props.products.map((product) => {
                 summ += product.price;
                 quantity++;
                 return <BucketItem product={product} key={product.id} />
-              })
+              }) || "Ваша корзина пуста!"
             }
           </div>
         </div>

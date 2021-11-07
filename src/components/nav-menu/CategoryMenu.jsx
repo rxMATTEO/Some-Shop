@@ -23,13 +23,13 @@ function CategoryMenu(props){
     <div className="category-menu" onMouseLeave={e => props.mouseLeave(e)} style={{ display: props.visibility }} onMouseOut={(e) => props.onMouseOut(e, () => setHoveredItem({}))}>
       <div className="subcategories">
         {
-          subcategories?.map((item) => <Subcategory onMouseOver={onSubCategoryMouseOver} item={item} />)
+          subcategories?.map((item, index) => <Subcategory onMouseOver={onSubCategoryMouseOver} item={item} key={index} />)
         }
       </div>
       <div style={{ display: "inline-block", padding: "0 20px 20px 0" }}>
         {
           getHoveredItemOrFirst()?.product?.map(
-            (item) => <CategoryItem imgSrc={item.imgSrc} header={item.header.split(',')[0]} brands={item.brands} api={item.header.split(',')[1]}/>
+            (item, index) => <CategoryItem imgSrc={item.imgSrc} header={item.header.split(',')[0]} brands={item.brands} api={item.header.split(',')[1]} key={index} />
           )
         }
       </div>

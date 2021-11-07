@@ -13,7 +13,7 @@ function BucketItem(props){
 
   return (
     <a className={className + " bucket-item"} href={"/products/" + props.product.id} onClick={(e) => onClick(e)} title={props.product.name}>
-      <div className="notification__close" onClick={(e) => { removeProduct(); e.preventDefault(); }}>
+      <div className="notification__close" onClick={(e) => { removeProduct(); e.preventDefault(); }} data-tooltip="Удалить товар из корзины">
         x
       </div>
       <div className="product-row__img">

@@ -9,7 +9,7 @@ function CategoryItem(props){
         <p className="category-header">{props.header}</p>
         {
           props.brands?.map(
-          item => <a className="brand" href={`/${props.api.toLowerCase()}/${item.toLowerCase()}`}>{item}</a>
+            (item, index) => <a key={index} className="brand" href={`/${props.api.toLowerCase()}/${item.toLowerCase()}`}>{item}</a>
         )}
       </div>
     </a>

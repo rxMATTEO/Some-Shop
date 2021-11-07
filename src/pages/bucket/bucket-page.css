@@ -42,6 +42,7 @@
   padding: 20px 10px;
 }
 .product-catalog__right .right__summary .summary__button {
+  transition: background-color ease-in-out 0.2s;
   background-color: #10ad44;
   color: white;
   padding: 20px 10px;
@@ -50,6 +51,9 @@
   border-radius: 5px;
   margin-bottom: 20px;
   cursor: pointer;
+}
+.product-catalog__right .right__summary .summary__button:hover {
+  background-color: #00842f;
 }
 .product-catalog__right .summary__bottom {
   font-size: 20px;
