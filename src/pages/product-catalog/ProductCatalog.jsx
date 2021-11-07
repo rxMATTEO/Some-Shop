@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import NavMenu from "../../components/nav-menu/NavMenu.jsx";
 import Header from "../../components/header/Header.jsx";
 import Footer from "../../components/footer/Footer.jsx";
@@ -17,19 +17,22 @@ function ProductCatalog(props) {
     async () => {
       const json = await fetchJSON(props.location.pathname);
       if(Object.keys(json).length > 0){
-        setProducts(json.map(( product, index) => <ProductRow imgSrc={product.imagePath} header={product.name} price={product.price} id={product.id} rating={product.rating} key={index} /> ));
+        setProducts(json.map(( response, index) => {
+          if(!response.flag) return <ProductRow product={response} key={index} />;
+          setHeader(response.flag);
+        }));
       }
       else history.push("/not-found");
       }
   , []);
-  useEffect(() => {
-    document.title = props.header || "Some shop";
-  });
 
     return (
       <div>
         <Header />
         <NavMenu />
+        <div className="content product-header" style={{padding: "20px 0 0 0"}}>
+          {header}
+        </div>
         <div className="product-catalog content">
           {
             products

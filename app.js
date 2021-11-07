@@ -54,7 +54,8 @@ app.get('/category/:categoryName', function (req, res){
                 }
               }
             }
-            res.json(products);
+            cat.flag = cat.nameRU;
+            res.json([...products, cat]);
           }
         )
       }
@@ -72,7 +73,8 @@ app.get("/subcategory/:subcategoryName", function (req, res, next){
       }
       Product.findAll({where: {SubcategoryId: sub.id}, raw : true}).then(
         products => {
-          res.json(products);
+          sub.flag = sub.nameRU;
+          res.json([...products, sub]);
         }
       )
     }
@@ -135,7 +137,7 @@ app.get("/:subcategory/:brand", function (req, res, next){
           } else
           Product.findAll({where: {brandId: brand.id, SubcategoryId: sub.id}, raw : true}).then(
             products => {
-              if(products) res.json(products);
+              if(products) res.json([...products, { flag: `${sub.nameRU} ${brand.name}` }]);
             }
           )
         }
@@ -150,7 +152,7 @@ app.get("/products/:productId/brand/:brandId", function (req, res, next){
     res.end();
     return;
   }
-  Product.findAll({where: {brandId: brandId}, raw: true}).then(
+  Product.findAll({where: {brandId}, raw: true}).then(
     products => {
       if(!products){
         res.writeHead(404);

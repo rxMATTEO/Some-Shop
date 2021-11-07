@@ -12,6 +12,10 @@ const Subcategories = sequelize.define("Subcategories", {
   name: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  nameRU: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
 });
 module.exports = Subcategories;
