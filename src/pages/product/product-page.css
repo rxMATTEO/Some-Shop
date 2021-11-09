@@ -51,6 +51,7 @@
 }
 .product .product__title .title__main-image img {
   height: 100%;
+  max-width: 100%;
 }
 .product .product__title .title__top {
   display: inline-block;

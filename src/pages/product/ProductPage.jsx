@@ -71,7 +71,7 @@ function ProductPage(props){
               <img src={mainImage} />
             </div>
             <div className="title__top">
-              <span className="top__text">{"12400 dpi, светодиодный, USB, кнопки - 6 подробнее"}</span>
+              <span className="top__text">{product.shortDescription}</span>
               <BuyLayout product={product} />
               <div className="top__stars">
                 <StarRating product={product} />

@@ -1,4 +1,4 @@
-import ProductRow from "../../components/input/ProductRow.jsx";
+import ProductRow from "../../components/input/product-row/ProductRow.jsx";
 import Header from "../../components/header/Header.jsx";
 import NavMenu from "../../components/nav-menu/NavMenu.jsx";
 import React, {useEffect, useState} from "react";

@@ -170,8 +170,9 @@ app.get("/search", function (req, res, next){
     res.writeHead(404);
     res.end();
   }else
-  Product.findAll({where: {
-      [Op.or] : [ {name: { [Op.like]: `%${query}%` }},{description: { [Op.like]: `%${query}%` }}]
+  Product.findAll({
+    where: {
+      [Op.or] : [ { name: { [Op.like]: `%${query}%` } }, { description: { [Op.like]: `%${query}%` } }, { shortDescription: { [Op.like]: `%${query}%` } }]
     }, raw: true}).then(
     products => {
       if(!products){

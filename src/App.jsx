@@ -11,7 +11,7 @@ import {Provider, connect} from "react-redux";
 import * as redux from 'redux';
 import Bucket from "./pages/bucket/BucketPage.jsx";
 import BucketPage from "./pages/bucket/BucketPage.jsx";
-import ProductRow from "./components/input/ProductRow.jsx";
+import ProductRow from "./components/input/product-row/ProductRow.jsx";
 import userClient from "./user/userClient.js";
 import {addNotification, addProduct, removeProduct} from "./redux/actions/actions.js";
 import Notification from "./components/input/notification/Notification.jsx";

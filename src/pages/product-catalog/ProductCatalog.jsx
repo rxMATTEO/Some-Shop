@@ -3,7 +3,7 @@ import NavMenu from "../../components/nav-menu/NavMenu.jsx";
 import Header from "../../components/header/Header.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import "./product-catalog.sass";
-import ProductRow from "../../components/input/ProductRow.jsx";
+import ProductRow from "../../components/input/product-row/ProductRow.jsx";
 import fetchJSON from "../../fetchJSON.js";
 import * as ReactDOM from "react-dom";
 import NotFoundPage from "../not-found/NotFoundPage.jsx";
@@ -21,7 +21,7 @@ function ProductCatalog(props) {
           if(!response.flag) return <ProductRow product={response} key={index} />;
           const header = response.flag;
           setHeader(header);
-          document.title = header;
+          document.title = `${header} | Some shop`;
         }));
       }
       else history.push("/not-found");

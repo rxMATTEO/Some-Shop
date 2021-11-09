@@ -35,6 +35,10 @@ const Product = sequelize.define("Product", {
   miniatures: {
     type: Sequelize.STRING,
     allowNull: true
+  },
+  shortDescription: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 });
 
