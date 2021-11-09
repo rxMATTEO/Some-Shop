@@ -1,0 +1,11 @@
+.right-block {
+  float: right;
+  color: #7F6FE3;
+  vertical-align: middle;
+}
+.right-block .right-block__icon {
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+/*# sourceMappingURL=product-row.css.map */
