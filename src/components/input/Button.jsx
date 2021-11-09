@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 function Button(props) {
     const { className, text } = props;
     return (
-      <div className={className} onClick={props.onClick}>
+      <div className={className} onClick={props.onClick} onMouseOver={(e) => e.target.title = ""}>
         <p className="button-label">{text}</p>
       </div>
     );

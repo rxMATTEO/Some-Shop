@@ -16,10 +16,12 @@ function ProductCatalog(props) {
   useEffect(
     async () => {
       const json = await fetchJSON(props.location.pathname);
-      if(Object.keys(json).length > 0){
+      if(Object.keys(json).length > 0 && !json[0].flag){
         setProducts(json.map(( response, index) => {
           if(!response.flag) return <ProductRow product={response} key={index} />;
-          setHeader(response.flag);
+          const header = response.flag;
+          setHeader(header);
+          document.title = header;
         }));
       }
       else history.push("/not-found");
