@@ -152,13 +152,15 @@ app.get("/products/:productId/brand/:brandId", function (req, res, next){
     res.end();
     return;
   }
-  Product.findAll({where: {brandId}, raw: true}).then(
+  Product.findAll({where: {brandId}}).then(
     products => {
       if(!products){
         res.writeHead(404);
         res.end();
       } else{
-        res.json(products);
+        products[0].getBrand().then(brand => {
+          res.json([...products, {flag: brand.name}]);
+        })
       }
     }
   );

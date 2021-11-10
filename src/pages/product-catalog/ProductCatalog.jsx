@@ -21,7 +21,7 @@ function ProductCatalog(props) {
           if(!response.flag) return <ProductRow product={response} key={index} />;
           const header = response.flag;
           setHeader(header);
-          document.title = `${header} | Some shop`;
+          document.title = `${header} | ${configuration.appName}`;
         }));
       }
       else history.push("/not-found");

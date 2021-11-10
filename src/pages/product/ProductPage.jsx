@@ -12,6 +12,7 @@ import BuyLayout from "../../components/input/BuyLayout.jsx";
 import Star from "../../components/input/Star.jsx";
 import StarRating from "../../components/input/StarRating.jsx";
 import userClient from "../../user/userClient.js";
+import configuration from "../../configuration.js";
 
 function ProductPage(props){
   const [product, setProduct] = useState({});
@@ -41,9 +42,9 @@ function ProductPage(props){
     setMainImage(bigImage);
   }
   useEffect( () => {
-      if (product.name) document.title = product.name;
+      if (product.name) document.title = `${product.name} | ${configuration.appName}`;
     }
-  )
+  );
     let miniatures = product.miniatures;
     if(miniatures){
       miniatures = miniatures.split(';').map( (item, index) => {

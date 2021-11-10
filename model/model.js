@@ -9,20 +9,21 @@ const Bucket = require("./Bucket.js");
 const User = require("./User.js");
 
 const model = {
-    applyRelationships(){
-      Product.hasMany(Bucket, { as: 'Bucket', foreignKey: 'ProductId' });
-      Bucket.belongsTo(Product);
-      User.hasMany(Bucket, { foreignKey: 'UserId' });
-      Bucket.belongsTo(User);
+  applyRelationships(){
+    Product.hasMany(Bucket, { as: 'Bucket', foreignKey: 'ProductId' });
+    Bucket.belongsTo(Product);
+    User.hasMany(Bucket, { foreignKey: 'UserId' });
+    Bucket.belongsTo(User);
 
-      Subcategories.hasMany(Product, {as: 'Subcategories', foreignKey: 'SubcategoryId'});
-      Product.belongsTo(Subcategories);
-      Brand.hasMany(Product, {as: 'Brands', foreignKey: 'BrandId'});
-      Product.belongsTo(Brand);
+    Subcategories.hasMany(Product, {as: 'Subcategories', foreignKey: 'SubcategoryId'});
+    Product.belongsTo(Subcategories);
 
-      Categories.hasMany(Subcategories, {as: 'Categories', foreignKey: 'CategoryId'});
-      Subcategories.belongsTo(Categories);
-    }
+    Brand.hasMany(Product, {as: 'Product', foreignKey: 'BrandId'});
+    Product.belongsTo(Brand);
+
+    Categories.hasMany(Subcategories, {as: 'Categories', foreignKey: 'CategoryId'});
+    Subcategories.belongsTo(Categories);
+  }
 }
 
 module.exports = model;
