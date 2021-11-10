@@ -1,24 +1,26 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import Header from "../../components/header/Header.jsx";
 import NavMenu from "../../components/nav-menu/NavMenu.jsx";
 import Banner from "../../components/banner/Banner.jsx";
-import PopularProductContainer from "../../components/popular-product/PopularProductContainer.jsx";
 import Footer from "../../components/footer/Footer.jsx";
-import RecentlyViewed from "../../components/recently-viewed/RecentlyViewed.jsx";
+import Product from "../../components/product/Product.jsx";
+import LoadingScreen from "../../components/input/loading-screen/LoadingScreen.jsx";
 
 
 function MainPage() {
-    return (
-      <div>
+  const PopularProductContainer = React.lazy(() => import("../../components/popular-product/PopularProductContainer.jsx"));
+  const RecentlyViewed = React.lazy(() => import("../../components/recently-viewed/RecentlyViewed.jsx"));
+  return (
+    <Suspense fallback={<LoadingScreen />}>
         <Header />
         <NavMenu />
         <Banner />
         <PopularProductContainer />
         <RecentlyViewed />
         <Footer />
-      </div>
-    );
+    </Suspense>
+  );
 }
 
 export default MainPage;

@@ -8,7 +8,6 @@
 }
 .arrowToolTip {
   position: absolute;
-  transform: translate(0, -50%);
   animation: opacityAnimation 0.2s ease-in-out;
 }
 .arrowToolTip .triangle {

@@ -1,10 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, Suspense} from 'react';
 import MainPage from "./pages/main/MainPage.jsx";
 import ProductPage from "./pages/product/ProductPage.jsx";
 import HoverToolTip from "./components/input/tooltip/HoverToolTip.jsx";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NotFoundPage from "./pages/not-found/NotFoundPage.jsx";
-import ProductCatalog from "./pages/product-catalog/ProductCatalog.jsx";
 import getRandomToken from "./getRandomToken.js";
 import fetchJSON from "./fetchJSON.js";
 import {Provider, connect} from "react-redux";
@@ -15,6 +14,7 @@ import ProductRow from "./components/input/product-row/ProductRow.jsx";
 import userClient from "./user/userClient.js";
 import {addNotification, addProduct, removeProduct} from "./redux/actions/actions.js";
 import Notification from "./components/input/notification/Notification.jsx";
+import LoadingScreen from "./components/input/loading-screen/LoadingScreen.jsx";
 
 function App(props){
   useEffect(() =>{
@@ -33,25 +33,28 @@ function App(props){
     return token;
   }
 
+  const ProductCatalog = React.lazy(() => import("./pages/product-catalog/ProductCatalog.jsx"));
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={MainPage} />
-        <Route path="/search/:query" component={(props) => (<ProductCatalog location={{pathname: "/search?query=" + props.match.params.query}} routeType="search"/>)} />
-        <Route path="/products/:id" exact component={ProductPage} />
-        <Route path="/category/:categoryName" component={(props) => <ProductCatalog {...props} routeType="category" />} />
-        <Route path="/:subcategory/:subcategoryName" exact component={(props) => <ProductCatalog {...props} routeType="subcategory" />} />
-        <Route path="/products/:productId/brand/:brandId" component={(props) => <ProductCatalog {...props} routeType="brand" />} />
-        <Route path="/bucket" component={BucketPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-      <HoverToolTip />
-      <div id="notifications">
-        {
-          props.notifications?.map((item, index) => <Notification text={item} key={index} />)
-        }
-      </div>
-    </Router>
+      <Router>
+        <Suspense fallback={<LoadingScreen />}>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route path="/search/:query" component={(props) => (<ProductCatalog location={{pathname: "/search?query=" + props.match.params.query}} routeType="search"/>)} />
+          <Route path="/products/:id" exact component={ProductPage} />
+          <Route path="/category/:categoryName" component={(props) => <ProductCatalog {...props} routeType="category" />} />
+          <Route path="/:subcategory/:subcategoryName" exact component={(props) => <ProductCatalog {...props} routeType="subcategory" />} />
+          <Route path="/products/:productId/brand/:brandId" component={(props) => <ProductCatalog {...props} routeType="brand" />} />
+          <Route path="/bucket" component={BucketPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+        <HoverToolTip />
+        <div id="notifications">
+          {
+            props.notifications?.map((item, index) => <Notification text={item} key={index} />)
+          }
+        </div>
+        </Suspense>
+      </Router>
   );
 }
 
