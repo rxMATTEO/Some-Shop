@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import Button from "../input/Button.jsx";
 import {addProduct, removeProduct} from "../../redux/actions/actions.js";
 import {connect} from "react-redux";
 import useBucket from "../../hooks/useBucket.js";
 import {ADD_PRODUCT} from "../../redux/actions/actionTypes.js";
+import configuration from "../../configuration.js";
+import normalizePrice from "../../normalizePrice.js";
 
 function Product(props){
   const addProduct = useBucket(ADD_PRODUCT, props.product);
+
   return (
     <div style={{ paddingRight: "20px", paddingTop: "20px", display: "inline-block"}}>
       <a className="popular-product" href={"products/" + props.product.id} onDragStart={ (e) => e.preventDefault() } title={props.product.name}>
@@ -16,7 +19,7 @@ function Product(props){
         </div>
         <div className="product-bottom">
           <div className="product-price">
-            {props.product.price}
+            {normalizePrice(props.product.price)}
           </div>
           <div className="product-desc">
             {props.product.name}

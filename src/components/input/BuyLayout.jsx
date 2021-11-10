@@ -7,13 +7,14 @@ import fetchJSON from "../../fetchJSON.js";
 import userClient from "../../user/userClient.js";
 import useBucket from "../../hooks/useBucket.js";
 import {ADD_PRODUCT} from "../../redux/actions/actionTypes.js";
+import normalizePrice from "../../normalizePrice.js";
 
 function BuyLayout(props){
   const addProduct = useBucket(ADD_PRODUCT, props.product);
   return (
     <div className="top__layout not-hoverable">
       <div className="layout__text">
-        <span>{props.product.price}</span>
+        <span>{normalizePrice(props.product.price)}</span>
       </div>
       <div className="layout__button" onClick={(e) => {addProduct(); e.preventDefault()}}>
         <span className="button__text">Купить</span>
