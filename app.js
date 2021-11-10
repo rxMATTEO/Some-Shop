@@ -54,7 +54,7 @@ app.get('/category/:categoryName', function (req, res){
                 }
               }
             }
-            cat.flag = cat.nameRU;
+            cat._productKind_ = cat.nameRU;
             res.json([...products, cat]);
           }
         )
@@ -73,7 +73,7 @@ app.get("/subcategory/:subcategoryName", function (req, res, next){
       }
       Product.findAll({where: {SubcategoryId: sub.id}, raw : true}).then(
         products => {
-          sub.flag = sub.nameRU;
+          sub._productKind_ = sub.nameRU;
           res.json([...products, sub]);
         }
       )
@@ -137,7 +137,7 @@ app.get("/:subcategory/:brand", function (req, res, next){
           } else
           Product.findAll({where: {brandId: brand.id, SubcategoryId: sub.id}, raw : true}).then(
             products => {
-              if(products) res.json([...products, { flag: `${sub.nameRU} ${brand.name}` }]);
+              if(products) res.json([...products, { _productKind_: `${sub.nameRU} ${brand.name}` }]);
             }
           )
         }
@@ -159,7 +159,7 @@ app.get("/products/:productId/brand/:brandId", function (req, res, next){
         res.end();
       } else{
         products[0].getBrand().then(brand => {
-          res.json([...products, {flag: brand.name}]);
+          res.json([...products, {_productKind_: brand.name}]);
         })
       }
     }
