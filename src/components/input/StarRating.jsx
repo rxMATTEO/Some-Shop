@@ -20,7 +20,7 @@ function StarRating(props){
   function onClick(e, id){
     const newRating = (++id + props.product.rating ) / 2;
     fetchJSON(`/set-product-rating?productId=${props.product.id}&rating=${newRating}`, () => {
-      props.addNotification("Вы успешно оценили товар! Рейтинг будет изменен после перезагрузки страницы.");
+      props.addNotification({text: "Вы успешно оценили товар! Рейтинг будет изменен после перезагрузки страницы."});
     });
   }
 

@@ -20,7 +20,7 @@ function CategoryMenu(props){
 // todo remove inline styles
   const { subcategories } = props;
   return (
-    <div className="category-menu" onMouseLeave={e => props.mouseLeave(e)} style={{ display: props.visibility }} onMouseOut={(e) => props.onMouseOut(e, () => setHoveredItem({}))}>
+    <div className="category-menu not-hoverable" onMouseLeave={e => props.mouseLeave(e)} style={{ display: props.visibility }} onMouseOut={(e) => props.onMouseOut(e, () => setHoveredItem({}))}>
       <div className="subcategories">
         {
           subcategories?.map((item, index) => <Subcategory onMouseOver={onSubCategoryMouseOver} item={item} key={index} />)

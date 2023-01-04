@@ -17,9 +17,9 @@ const setState = (product) => ({
   product: Array.from(product)
 });
 
-const addNotification = (notificationText) => ({
+const addNotification = (notification) => ({
   type: ADD_NOTIFICATION,
-  notificationText
+  notification
 });
 
 export {addProduct, removeProduct, setState, addNotification};

@@ -86,10 +86,12 @@ function Carousel(props){
     let style = Object.assign({}, props.style);
     style.width = props.width;
     return (
-      <div className="banner" style={style} onMouseDown={ onMouseDown }>
+      <div style={{position: "relative"}}>
         <ArrowButton text={leftArrow} onClick={ onLeftArrowClick } />
-        <div className="carousel" style={{ right: right, transition: transition, width: maxWidth }}>
-          { props.items }
+        <div className="banner" style={style} onMouseDown={ onMouseDown }>
+          <div className="carousel" style={{ right: right, transition: transition, width: maxWidth }}>
+            <div>{ props.items }</div>
+          </div>
         </div>
         <ArrowButton text={rightArrow} style="right" onClick={ onRightArrowClick } />
       </div>

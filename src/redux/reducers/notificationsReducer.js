@@ -7,7 +7,7 @@ const initState = {
 export default function notificationsReducer(state = initState, action){
   switch (action.type){
     case ADD_NOTIFICATION: {
-      return { notifications: [...state.notifications, action.notificationText] };
+      return { notifications: [...state.notifications, action.notification] };
     }
     default: return state;
   }

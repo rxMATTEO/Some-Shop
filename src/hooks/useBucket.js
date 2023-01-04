@@ -13,7 +13,7 @@ function useBucket(action, product){
     case ADD_PRODUCT: {
       return function () {
         dispatch(addProduct(product));
-        dispatch(addNotification("Вы успешно добавили товар в корзину!"));
+        dispatch(addNotification({text: "Вы успешно добавили товар в корзину!"}));
         (async () => {
           const user = await userClient.getCurrentUser();
           if (user) fetchJSON(`/bucket/set?userId=${user.user.id}&productId=${product.id}`);
@@ -23,7 +23,7 @@ function useBucket(action, product){
     case REMOVE_PRODUCT: {
       return function() {
         dispatch(removeProduct(product));
-        dispatch(addNotification("Вы успешно удалили товар из корзины!"));
+        dispatch(addNotification({text: "Вы успешно добавили товар в корзину!"}));
         (async () => {
           const user = await userClient.getCurrentUser();
           if (user) fetchJSON(`/bucket/remove?userId=${user.user.id}&productId=${product.id}`);

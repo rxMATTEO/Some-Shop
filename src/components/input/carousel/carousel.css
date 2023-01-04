@@ -4,8 +4,12 @@
 
 .banner {
   position: relative;
-  overflow: hidden;
   display: inline-block;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.banner::-webkit-scrollbar {
+  display: none;
 }
 
 /*# sourceMappingURL=carousel.css.map */
