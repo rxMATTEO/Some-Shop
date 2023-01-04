@@ -35,26 +35,26 @@ function App(props){
 
   const ProductCatalog = React.lazy(() => import("./pages/product-catalog/ProductCatalog.jsx"));
   return (
-      <Router>
-        <Suspense fallback={<LoadingScreen />}>
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route path="/search/:query" component={(props) => (<ProductCatalog location={{pathname: "/search?query=" + props.match.params.query}} routeType="search"/>)} />
-          <Route path="/products/:id" exact component={ProductPage} />
-          <Route path="/category/:categoryName" component={(props) => <ProductCatalog {...props} routeType="category" />} />
-          <Route path="/:subcategory/:subcategoryName" exact component={(props) => <ProductCatalog {...props} routeType="subcategory" />} />
-          <Route path="/products/:productId/brand/:brandId" component={(props) => <ProductCatalog {...props} routeType="brand" />} />
-          <Route path="/bucket" component={BucketPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
-        <HoverToolTip />
-        <div id="notifications">
-          {
-            props.notifications?.map((item, index) => <Notification text={item} key={index} />)
-          }
-        </div>
-        </Suspense>
-      </Router>
+    <Router>
+      <Suspense fallback={<LoadingScreen />}>
+      <Switch>
+        <Route exact path="/" component={MainPage} />
+        <Route path="/search/:query" component={(props) => (<ProductCatalog location={{pathname: "/search?query=" + props.match.params.query}} routeType="search"/>)} />
+        <Route path="/products/:id" exact component={ProductPage} />
+        <Route path="/category/:categoryName" component={(props) => <ProductCatalog {...props} routeType="category" />} />
+        <Route path="/:subcategory/:subcategoryName" exact component={(props) => <ProductCatalog {...props} routeType="subcategory" />} />
+        <Route path="/products/:productId/brand/:brandId" component={(props) => <ProductCatalog {...props} routeType="brand" />} />
+        <Route path="/bucket" component={BucketPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+      <HoverToolTip />
+      <div id="notifications">
+        {
+          props.notifications?.map((item, index) => <Notification text={item.text} key={index} />)
+        }
+      </div>
+      </Suspense>
+    </Router>
   );
 }
 

@@ -5,12 +5,12 @@ const app = express();
 const json = express.json();
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const sequelize = new Sequelize("SomeShop","admin","1234567",
+const sequelize = new Sequelize("sql8588205","sql8588205","MsAzm3RvPY",
   {
-    dialect: "mssql",
-    host: "home-pc"
-  }
-  );
+    dialect: "mysql",
+    host: "sql8.freemysqlhosting.net",
+    port: 3306
+  });
 app.listen(port, () => console.log('Server is started'));
 
 module.exports = {
