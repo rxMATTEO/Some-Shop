@@ -4,7 +4,7 @@ import React from 'react';
 import NotFoundPage from "./pages/not-found/NotFoundPage.jsx";
 
 function fetchJSON(locationPath, callback){
-  return fetch(configuration.serverUrl + locationPath, {
+  return fetch(configuration.apiUrl + locationPath, {
     method: "GET"
   }).then( res => {
     if(res.status === 404){

@@ -1,12 +1,15 @@
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   devtool: 'eval-source-map',
-  mode: "development",
+  mode: "production",
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname + '/public'),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: "/"
   },
   devServer: {
     historyApiFallback: true,
@@ -14,6 +17,15 @@ module.exports = {
     open: true,
     host: 'localhost'
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      hash: true,
+      filename: "index.html",
+      template: './public/index.html',
+      publicPath: '/'
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    ],
   module: {
     rules: [
       {

@@ -1,5 +1,5 @@
 const config = {
-  serverUrl: "http://localhost:3000",
+  apiUrl: "http://localhost:3000/api",
   appName: "Some shop"
 };
 

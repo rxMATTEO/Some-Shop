@@ -5,13 +5,11 @@ const app = express();
 const json = express.json();
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const sequelize = new Sequelize("sql8588205","sql8588205","MsAzm3RvPY",
+const sequelize = new Sequelize("SomeShop","aboba1488_SQLLogin_1","nvbxum4n5s",
   {
-    dialect: "mysql",
-    host: "sql8.freemysqlhosting.net",
-    port: 3306
+    dialect: "mssql",
+    host: "SomeShop.mssql.somee.com"
   });
-app.listen(port, () => console.log('Server is started'));
 
 module.exports = {
   sequelize: sequelize
@@ -26,20 +24,26 @@ const Subcategories = require("./model/Subcategories.js");
 const User = require("./model/User.js");
 const ViewHistory = require("./model/ViewHistory.js");
 const Bucket = require("./model/Bucket.js");
+const path = require("path");
 sequelize.sync().then( res =>
 {
   console.log('SQL is connected');
 });
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/*', function(req,res, next) {
+  if(req.path.includes('api')){
+    return next();
+  }
+  res.sendFile(__dirname + '/public/index.html');
+});
 
-app.use(function(req,res, next){
+app.listen(port, () => console.log('Server is started'));
+
+app.get('/api/category/:categoryName', function (req, res){
   res.set({
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*"
   });
-  next();
-});
-
-app.get('/category/:categoryName', function (req, res){
   const categoryName = req.params["categoryName"];
   Categories.findOne({where: {name: categoryName}, raw: true}).then( cat => {
     Subcategories.findAll({where: {CategoryId: cat.id}}).then(
@@ -63,7 +67,11 @@ app.get('/category/:categoryName', function (req, res){
   });
 });
 
-app.get("/subcategory/:subcategoryName", function (req, res, next){
+app.get("/api/subcategory/:subcategoryName", function (req, res, next){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const subcategory = req.params["subcategoryName"];
   Subcategories.findOne({where: {name: subcategory}, raw: true}).then(
     sub => {
@@ -81,13 +89,21 @@ app.get("/subcategory/:subcategoryName", function (req, res, next){
   );
 });
 
-app.get("/popular-products", function (req, res){
+app.get("/api/popular-products", function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   Product.findAll({raw: true}).then( data =>{
     res.json(data.sort( (a,b) => parseInt(a.viewsCount) < parseInt(b.viewsCount) ? 1 : -1 ));
   });
 });
 
-app.get("/products/:id", function (req, res, next){
+app.get("/api/products/:id", function (req, res, next){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const id = req.params["id"];
   if(!isFinite(id)) {
     res.writeHead(404);
@@ -101,11 +117,19 @@ app.get("/products/:id", function (req, res, next){
   }
 });
 
-app.get("/categories", function (req, res){
+app.get("/api/categories", function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   Categories.findAll({raw: true}).then( data => res.json(data) );
 });
 
-app.get("/brands", function (req, res, next) {
+app.get("/api/brands", function (req, res, next) {
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const id = req.query["id"];
   if (!isFinite(id)) {
     res.writeHead(404);
@@ -121,7 +145,11 @@ app.get("/brands", function (req, res, next) {
   }
 });
 
-app.get("/:subcategory/:brand", function (req, res, next){
+app.get("/api/:subcategory/:brand", function (req, res, next){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const subcategory = req.params["subcategory"];
   const brand = req.params["brand"];
   Subcategories.findOne({where: {name: subcategory}, raw: true}).then(
@@ -146,7 +174,11 @@ app.get("/:subcategory/:brand", function (req, res, next){
   );
 });
 
-app.get("/products/:productId/brand/:brandId", function (req, res, next){
+app.get("/api/products/:productId/brand/:brandId", function (req, res, next){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const brandId = req.params["brandId"];
   if(!brandId){
     res.end();
@@ -166,7 +198,11 @@ app.get("/products/:productId/brand/:brandId", function (req, res, next){
   );
 });
 
-app.get("/search", function (req, res, next){
+app.get("/api/search", function (req, res, next){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const query = req.query["query"];
   if(!query){
     res.writeHead(404);
@@ -187,7 +223,11 @@ app.get("/search", function (req, res, next){
   );
 });
 
-app.get("/set-product-view", function (req, res){
+app.get("/api/set-product-view", function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const productId = req.query["productId"];
   const views = req.query["views"];
   if(productId && views){
@@ -202,7 +242,11 @@ app.get("/set-product-view", function (req, res){
   }
 });
 
-app.get("/set-product-rating", function (req, res){
+app.get("/api/set-product-rating", function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const productId = req.query["productId"];
   const rating = req.query["rating"];
   if(productId && rating){
@@ -217,7 +261,11 @@ app.get("/set-product-rating", function (req, res){
   }
 });
 
-app.get("/create-user", function (req, res){
+app.get("/api/create-user", function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const token = req.query["token"];
   if(token){
     User.create({token: token}).then(
@@ -232,7 +280,11 @@ app.get("/create-user", function (req, res){
   }
 });
 
-app.get("/get-user", function (req, res){
+app.get("/api/get-user", function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const token = req.query["token"];
   if(token){
     User.findOne({where: {token: token}}).then(
@@ -247,7 +299,11 @@ app.get("/get-user", function (req, res){
   }
 });
 
-app.get("/append-view-to-history", function (req, res){
+app.get("/api/append-view-to-history", function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const userId = req.query["userId"];
   const productId = req.query["productId"];
   if(userId && productId){
@@ -267,7 +323,11 @@ app.get("/append-view-to-history", function (req, res){
   }
 });
 
-app.get("/get-view-history", function (req, res){
+app.get("/api/get-view-history", function (req, res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const userId = req.query["userId"];
   if(userId){
     ViewHistory.findAll({ where: {userId: userId}, limit: 10, order: [ ['createdAt', 'DESC'] ] }).then(
@@ -278,7 +338,11 @@ app.get("/get-view-history", function (req, res){
   }
 });
 
-app.get("/bucket/get", function(req,res){
+app.get("/api/bucket/get", function(req,res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const userId = req.query["userId"];
   if(userId){
     Bucket.findAll({where: {userId}}).then(bucket => {
@@ -299,7 +363,11 @@ app.get("/bucket/get", function(req,res){
   }
 });
 
-app.get("/bucket/set", function(req,res){
+app.get("/api/bucket/set", function(req,res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const userId = req.query["userId"];
   const productId = req.query["productId"];
   if(userId && productId){
@@ -317,7 +385,11 @@ app.get("/bucket/set", function(req,res){
   }
 });
 
-app.get("/bucket/remove", function(req,res){
+app.get("/api/bucket/remove", function(req,res){
+  res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
   const userId = req.query["userId"];
   const productId = req.query["productId"];
   if(userId && productId){
